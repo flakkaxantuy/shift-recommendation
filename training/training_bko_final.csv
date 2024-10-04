@@ -1,0 +1,397 @@
+Tanggal,Hari,Lokasi,Shift,Jumlah Personil,Harga Satuan,Satuan,Event,Personil,keyword
+2024-01-01,1,BATULICIN,1,1,260000,Orang/Shift,Tahun Baru,TNI,masehi
+2024-02-09,1,BATULICIN,1,1,260000,Orang/Shift,Tahun Baru Imlek,TNI,imlek
+2024-02-10,2,BATULICIN,2,1,260000,Orang/Shift,Tahun Baru Imlek,TNI,imlek
+2024-03-11,1,BATULICIN,1,1,260000,Orang/Shift,Hari Raya Nyepi,TNI,nyepi
+2024-03-12,2,BATULICIN,2,1,260000,Orang/Shift,Hari Raya Nyepi,TNI,nyepi
+2024-04-08,1,BATULICIN,1,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-09,2,BATULICIN,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-10,3,BATULICIN,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-11,4,BATULICIN,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-12,5,BATULICIN,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-15,6,BATULICIN,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-05-23,1,BATULICIN,1,1,260000,Orang/Shift,Hari Raya Waisak,TNI,waisak
+2024-05-24,2,BATULICIN,2,1,260000,Orang/Shift,Hari Raya Waisak,TNI,waisak
+2024-06-17,1,BATULICIN,1,1,260000,Orang/Shift,Hari Raya Idul Adha,TNI,idul adha
+2024-06-18,2,BATULICIN,2,1,260000,Orang/Shift,Hari Raya Idul Adha,TNI,idul adha
+2024-08-17,1,BATULICIN,1,1,260000,Orang/Shift,Hari Kemerdekaan Republik Indonesia,TNI,kemerdekaan
+2024-12-25,1,BATULICIN,1,1,260000,Orang/Shift,Hari Raya Natal,TNI,natal
+2024-12-26,2,BATULICIN,2,1,260000,Orang/Shift,Hari Raya Natal,TNI,natal
+2024-01-01,1,BKA KALIANAK,1,1,260000,Orang/Shift,Tahun Baru,TNI,masehi
+2024-02-09,1,BKA KALIANAK,1,1,260000,Orang/Shift,Tahun Baru Imlek,TNI,imlek
+2024-02-10,2,BKA KALIANAK,2,1,260000,Orang/Shift,Tahun Baru Imlek,TNI,imlek
+2024-03-11,1,BKA KALIANAK,1,1,260000,Orang/Shift,Hari Raya Nyepi,TNI,nyepi
+2024-03-12,2,BKA KALIANAK,2,1,260000,Orang/Shift,Hari Raya Nyepi,TNI,nyepi
+2024-04-08,1,BKA KALIANAK,1,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-09,2,BKA KALIANAK,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-10,3,BKA KALIANAK,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-11,4,BKA KALIANAK,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-12,5,BKA KALIANAK,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-15,6,BKA KALIANAK,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-05-23,1,BKA KALIANAK,1,1,260000,Orang/Shift,Hari Raya Waisak,TNI,waisak
+2024-05-24,2,BKA KALIANAK,2,1,260000,Orang/Shift,Hari Raya Waisak,TNI,waisak
+2024-06-17,1,BKA KALIANAK,1,1,260000,Orang/Shift,Hari Raya Idul Adha,TNI,idul adha
+2024-06-18,2,BKA KALIANAK,2,1,260000,Orang/Shift,Hari Raya Idul Adha,TNI,idul adha
+2024-08-17,1,BKA KALIANAK,1,1,260000,Orang/Shift,Hari Kemerdekaan Republik Indonesia,TNI,kemerdekaan
+2024-12-25,1,BKA KALIANAK,1,1,260000,Orang/Shift,Hari Raya Natal,TNI,natal
+2024-12-26,2,BKA KALIANAK,2,1,260000,Orang/Shift,Hari Raya Natal,TNI,natal
+2024-01-01,1,DEPO 4,1,1,260000,Orang/Shift,Tahun Baru,TNI,masehi
+2024-02-09,1,DEPO 4,1,1,260000,Orang/Shift,Tahun Baru Imlek,TNI,imlek
+2024-02-10,2,DEPO 4,2,1,260000,Orang/Shift,Tahun Baru Imlek,TNI,imlek
+2024-03-11,1,DEPO 4,1,1,260000,Orang/Shift,Hari Raya Nyepi,TNI,nyepi
+2024-03-12,2,DEPO 4,2,1,260000,Orang/Shift,Hari Raya Nyepi,TNI,nyepi
+2024-04-08,1,DEPO 4,1,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-09,2,DEPO 4,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-10,3,DEPO 4,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-11,4,DEPO 4,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-12,5,DEPO 4,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-15,6,DEPO 4,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-05-23,1,DEPO 4,1,1,260000,Orang/Shift,Hari Raya Waisak,TNI,waisak
+2024-05-24,2,DEPO 4,2,1,260000,Orang/Shift,Hari Raya Waisak,TNI,waisak
+2024-06-17,1,DEPO 4,1,1,260000,Orang/Shift,Hari Raya Idul Adha,TNI,idul adha
+2024-06-18,2,DEPO 4,2,1,260000,Orang/Shift,Hari Raya Idul Adha,TNI,idul adha
+2024-08-17,1,DEPO 4,1,1,260000,Orang/Shift,Hari Kemerdekaan Republik Indonesia,TNI,kemerdekaan
+2024-12-25,1,DEPO 4,1,1,260000,Orang/Shift,Hari Raya Natal,TNI,natal
+2024-12-26,2,DEPO 4,2,1,260000,Orang/Shift,Hari Raya Natal,TNI,natal
+2024-01-01,1,DEPO BALIKPAPAN,1,1,260000,Orang/Shift,Tahun Baru,TNI,masehi
+2024-02-09,1,DEPO BALIKPAPAN,1,1,260000,Orang/Shift,Tahun Baru Imlek,TNI,imlek
+2024-02-10,2,DEPO BALIKPAPAN,2,1,260000,Orang/Shift,Tahun Baru Imlek,TNI,imlek
+2024-03-11,1,DEPO BALIKPAPAN,1,1,260000,Orang/Shift,Hari Raya Nyepi,TNI,nyepi
+2024-03-12,2,DEPO BALIKPAPAN,2,1,260000,Orang/Shift,Hari Raya Nyepi,TNI,nyepi
+2024-04-08,1,DEPO BALIKPAPAN,1,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-09,2,DEPO BALIKPAPAN,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-10,3,DEPO BALIKPAPAN,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-11,4,DEPO BALIKPAPAN,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-12,5,DEPO BALIKPAPAN,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-15,6,DEPO BALIKPAPAN,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-05-23,1,DEPO BALIKPAPAN,1,1,260000,Orang/Shift,Hari Raya Waisak,TNI,waisak
+2024-05-24,2,DEPO BALIKPAPAN,2,1,260000,Orang/Shift,Hari Raya Waisak,TNI,waisak
+2024-06-17,1,DEPO BALIKPAPAN,1,1,260000,Orang/Shift,Hari Raya Idul Adha,TNI,idul adha
+2024-06-18,2,DEPO BALIKPAPAN,2,1,260000,Orang/Shift,Hari Raya Idul Adha,TNI,idul adha
+2024-08-17,1,DEPO BALIKPAPAN,1,1,260000,Orang/Shift,Hari Kemerdekaan Republik Indonesia,TNI,kemerdekaan
+2024-12-25,1,DEPO BALIKPAPAN,1,1,260000,Orang/Shift,Hari Raya Natal,TNI,natal
+2024-12-26,2,DEPO BALIKPAPAN,2,1,260000,Orang/Shift,Hari Raya Natal,TNI,natal
+2024-01-01,1,DEPO JAPFA,1,1,260000,Orang/Shift,Tahun Baru,TNI,masehi
+2024-02-09,1,DEPO JAPFA,1,1,260000,Orang/Shift,Tahun Baru Imlek,TNI,imlek
+2024-02-10,2,DEPO JAPFA,2,1,260000,Orang/Shift,Tahun Baru Imlek,TNI,imlek
+2024-03-11,1,DEPO JAPFA,1,1,260000,Orang/Shift,Hari Raya Nyepi,TNI,nyepi
+2024-03-12,2,DEPO JAPFA,2,1,260000,Orang/Shift,Hari Raya Nyepi,TNI,nyepi
+2024-04-08,1,DEPO JAPFA,1,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-09,2,DEPO JAPFA,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-10,3,DEPO JAPFA,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-11,4,DEPO JAPFA,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-12,5,DEPO JAPFA,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-15,6,DEPO JAPFA,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-05-23,1,DEPO JAPFA,1,1,260000,Orang/Shift,Hari Raya Waisak,TNI,waisak
+2024-05-24,2,DEPO JAPFA,2,1,260000,Orang/Shift,Hari Raya Waisak,TNI,waisak
+2024-06-17,1,DEPO JAPFA,1,1,260000,Orang/Shift,Hari Raya Idul Adha,TNI,idul adha
+2024-06-18,2,DEPO JAPFA,2,1,260000,Orang/Shift,Hari Raya Idul Adha,TNI,idul adha
+2024-08-17,1,DEPO JAPFA,1,1,260000,Orang/Shift,Hari Kemerdekaan Republik Indonesia,TNI,kemerdekaan
+2024-12-25,1,DEPO JAPFA,1,1,260000,Orang/Shift,Hari Raya Natal,TNI,natal
+2024-12-26,2,DEPO JAPFA,2,1,260000,Orang/Shift,Hari Raya Natal,TNI,natal
+2024-01-01,1,DEPO JAPFA PB,1,1,260000,Orang/Shift,Tahun Baru,TNI,masehi
+2024-02-09,1,DEPO JAPFA PB,1,1,260000,Orang/Shift,Tahun Baru Imlek,TNI,imlek
+2024-02-10,2,DEPO JAPFA PB,2,1,260000,Orang/Shift,Tahun Baru Imlek,TNI,imlek
+2024-03-11,1,DEPO JAPFA PB,1,1,260000,Orang/Shift,Hari Raya Nyepi,TNI,nyepi
+2024-03-12,2,DEPO JAPFA PB,2,1,260000,Orang/Shift,Hari Raya Nyepi,TNI,nyepi
+2024-04-08,1,DEPO JAPFA PB,1,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-09,2,DEPO JAPFA PB,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-10,3,DEPO JAPFA PB,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-11,4,DEPO JAPFA PB,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-12,5,DEPO JAPFA PB,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-15,6,DEPO JAPFA PB,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-05-23,1,DEPO JAPFA PB,1,1,260000,Orang/Shift,Hari Raya Waisak,TNI,waisak
+2024-05-24,2,DEPO JAPFA PB,2,1,260000,Orang/Shift,Hari Raya Waisak,TNI,waisak
+2024-06-17,1,DEPO JAPFA PB,1,1,260000,Orang/Shift,Hari Raya Idul Adha,TNI,idul adha
+2024-06-18,2,DEPO JAPFA PB,2,1,260000,Orang/Shift,Hari Raya Idul Adha,TNI,idul adha
+2024-08-17,1,DEPO JAPFA PB,1,1,260000,Orang/Shift,Hari Kemerdekaan Republik Indonesia,TNI,kemerdekaan
+2024-12-25,1,DEPO JAPFA PB,1,1,260000,Orang/Shift,Hari Raya Natal,TNI,natal
+2024-12-26,2,DEPO JAPFA PB,2,1,260000,Orang/Shift,Hari Raya Natal,TNI,natal
+2024-01-01,1,DEPO LINKAR,1,1,260000,Orang/Shift,Tahun Baru,TNI,masehi
+2024-02-09,1,DEPO LINKAR,1,1,260000,Orang/Shift,Tahun Baru Imlek,TNI,imlek
+2024-02-10,2,DEPO LINKAR,2,1,260000,Orang/Shift,Tahun Baru Imlek,TNI,imlek
+2024-03-11,1,DEPO LINKAR,1,1,260000,Orang/Shift,Hari Raya Nyepi,TNI,nyepi
+2024-03-12,2,DEPO LINKAR,2,1,260000,Orang/Shift,Hari Raya Nyepi,TNI,nyepi
+2024-04-08,1,DEPO LINKAR,1,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-09,2,DEPO LINKAR,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-10,3,DEPO LINKAR,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-11,4,DEPO LINKAR,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-12,5,DEPO LINKAR,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-15,6,DEPO LINKAR,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-05-23,1,DEPO LINKAR,1,1,260000,Orang/Shift,Hari Raya Waisak,TNI,waisak
+2024-05-24,2,DEPO LINKAR,2,1,260000,Orang/Shift,Hari Raya Waisak,TNI,waisak
+2024-06-17,1,DEPO LINKAR,1,1,260000,Orang/Shift,Hari Raya Idul Adha,TNI,idul adha
+2024-06-18,2,DEPO LINKAR,2,1,260000,Orang/Shift,Hari Raya Idul Adha,TNI,idul adha
+2024-08-17,1,DEPO LINKAR,1,1,260000,Orang/Shift,Hari Kemerdekaan Republik Indonesia,TNI,kemerdekaan
+2024-12-25,1,DEPO LINKAR,1,1,260000,Orang/Shift,Hari Raya Natal,TNI,natal
+2024-12-26,2,DEPO LINKAR,2,1,260000,Orang/Shift,Hari Raya Natal,TNI,natal
+2024-01-01,1,DEPO PALARAN,1,1,260000,Orang/Shift,Tahun Baru,TNI,masehi
+2024-02-09,1,DEPO PALARAN,1,1,260000,Orang/Shift,Tahun Baru Imlek,TNI,imlek
+2024-02-10,2,DEPO PALARAN,2,1,260000,Orang/Shift,Tahun Baru Imlek,TNI,imlek
+2024-03-11,1,DEPO PALARAN,1,1,260000,Orang/Shift,Hari Raya Nyepi,TNI,nyepi
+2024-03-12,2,DEPO PALARAN,2,1,260000,Orang/Shift,Hari Raya Nyepi,TNI,nyepi
+2024-04-08,1,DEPO PALARAN,1,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-09,2,DEPO PALARAN,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-10,3,DEPO PALARAN,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-11,4,DEPO PALARAN,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-12,5,DEPO PALARAN,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-15,6,DEPO PALARAN,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-05-23,1,DEPO PALARAN,1,1,260000,Orang/Shift,Hari Raya Waisak,TNI,waisak
+2024-05-24,2,DEPO PALARAN,2,1,260000,Orang/Shift,Hari Raya Waisak,TNI,waisak
+2024-06-17,1,DEPO PALARAN,1,1,260000,Orang/Shift,Hari Raya Idul Adha,TNI,idul adha
+2024-06-18,2,DEPO PALARAN,2,1,260000,Orang/Shift,Hari Raya Idul Adha,TNI,idul adha
+2024-08-17,1,DEPO PALARAN,1,1,260000,Orang/Shift,Hari Kemerdekaan Republik Indonesia,TNI,kemerdekaan
+2024-12-25,1,DEPO PALARAN,1,1,260000,Orang/Shift,Hari Raya Natal,TNI,natal
+2024-12-26,2,DEPO PALARAN,2,1,260000,Orang/Shift,Hari Raya Natal,TNI,natal
+2024-01-01,1,DEPO PKS,1,1,260000,Orang/Shift,Tahun Baru,TNI,masehi
+2024-02-09,1,DEPO PKS,1,1,260000,Orang/Shift,Tahun Baru Imlek,TNI,imlek
+2024-02-10,2,DEPO PKS,2,1,260000,Orang/Shift,Tahun Baru Imlek,TNI,imlek
+2024-03-11,1,DEPO PKS,1,1,260000,Orang/Shift,Hari Raya Nyepi,TNI,nyepi
+2024-03-12,2,DEPO PKS,2,1,260000,Orang/Shift,Hari Raya Nyepi,TNI,nyepi
+2024-04-08,1,DEPO PKS,1,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-09,2,DEPO PKS,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-10,3,DEPO PKS,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-11,4,DEPO PKS,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-12,5,DEPO PKS,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-15,6,DEPO PKS,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-05-23,1,DEPO PKS,1,1,260000,Orang/Shift,Hari Raya Waisak,TNI,waisak
+2024-05-24,2,DEPO PKS,2,1,260000,Orang/Shift,Hari Raya Waisak,TNI,waisak
+2024-06-17,1,DEPO PKS,1,1,260000,Orang/Shift,Hari Raya Idul Adha,TNI,idul adha
+2024-06-18,2,DEPO PKS,2,1,260000,Orang/Shift,Hari Raya Idul Adha,TNI,idul adha
+2024-08-17,1,DEPO PKS,1,1,260000,Orang/Shift,Hari Kemerdekaan Republik Indonesia,TNI,kemerdekaan
+2024-12-25,1,DEPO PKS,1,1,260000,Orang/Shift,Hari Raya Natal,TNI,natal
+2024-12-26,2,DEPO PKS,2,1,260000,Orang/Shift,Hari Raya Natal,TNI,natal
+2024-01-01,1,DEPO TARAKAN,1,1,260000,Orang/Shift,Tahun Baru,TNI,masehi
+2024-02-09,1,DEPO TARAKAN,1,1,260000,Orang/Shift,Tahun Baru Imlek,TNI,imlek
+2024-02-10,2,DEPO TARAKAN,2,1,260000,Orang/Shift,Tahun Baru Imlek,TNI,imlek
+2024-03-11,1,DEPO TARAKAN,1,1,260000,Orang/Shift,Hari Raya Nyepi,TNI,nyepi
+2024-03-12,2,DEPO TARAKAN,2,1,260000,Orang/Shift,Hari Raya Nyepi,TNI,nyepi
+2024-04-08,1,DEPO TARAKAN,1,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-09,2,DEPO TARAKAN,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-10,3,DEPO TARAKAN,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-11,4,DEPO TARAKAN,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-12,5,DEPO TARAKAN,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-15,6,DEPO TARAKAN,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-05-23,1,DEPO TARAKAN,1,1,260000,Orang/Shift,Hari Raya Waisak,TNI,waisak
+2024-05-24,2,DEPO TARAKAN,2,1,260000,Orang/Shift,Hari Raya Waisak,TNI,waisak
+2024-06-17,1,DEPO TARAKAN,1,1,260000,Orang/Shift,Hari Raya Idul Adha,TNI,idul adha
+2024-06-18,2,DEPO TARAKAN,2,1,260000,Orang/Shift,Hari Raya Idul Adha,TNI,idul adha
+2024-08-17,1,DEPO TARAKAN,1,1,260000,Orang/Shift,Hari Kemerdekaan Republik Indonesia,TNI,kemerdekaan
+2024-12-25,1,DEPO TARAKAN,1,1,260000,Orang/Shift,Hari Raya Natal,TNI,natal
+2024-12-26,2,DEPO TARAKAN,2,1,260000,Orang/Shift,Hari Raya Natal,TNI,natal
+2024-01-01,1,DEPO TB 4,1,1,260000,Orang/Shift,Tahun Baru,TNI,masehi
+2024-02-09,1,DEPO TB 4,1,1,260000,Orang/Shift,Tahun Baru Imlek,TNI,imlek
+2024-02-10,2,DEPO TB 4,2,1,260000,Orang/Shift,Tahun Baru Imlek,TNI,imlek
+2024-03-11,1,DEPO TB 4,1,1,260000,Orang/Shift,Hari Raya Nyepi,TNI,nyepi
+2024-03-12,2,DEPO TB 4,2,1,260000,Orang/Shift,Hari Raya Nyepi,TNI,nyepi
+2024-04-08,1,DEPO TB 4,1,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-09,2,DEPO TB 4,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-10,3,DEPO TB 4,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-11,4,DEPO TB 4,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-12,5,DEPO TB 4,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-15,6,DEPO TB 4,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-05-23,1,DEPO TB 4,1,1,260000,Orang/Shift,Hari Raya Waisak,TNI,waisak
+2024-05-24,2,DEPO TB 4,2,1,260000,Orang/Shift,Hari Raya Waisak,TNI,waisak
+2024-06-17,1,DEPO TB 4,1,1,260000,Orang/Shift,Hari Raya Idul Adha,TNI,idul adha
+2024-06-18,2,DEPO TB 4,2,1,260000,Orang/Shift,Hari Raya Idul Adha,TNI,idul adha
+2024-08-17,1,DEPO TB 4,1,1,260000,Orang/Shift,Hari Kemerdekaan Republik Indonesia,TNI,kemerdekaan
+2024-12-25,1,DEPO TB 4,1,1,260000,Orang/Shift,Hari Raya Natal,TNI,natal
+2024-12-26,2,DEPO TB 4,2,1,260000,Orang/Shift,Hari Raya Natal,TNI,natal
+2024-01-01,1,DEPO TL 11,1,1,260000,Orang/Shift,Tahun Baru,TNI,masehi
+2024-02-09,1,DEPO TL 11,1,1,260000,Orang/Shift,Tahun Baru Imlek,TNI,imlek
+2024-02-10,2,DEPO TL 11,2,1,260000,Orang/Shift,Tahun Baru Imlek,TNI,imlek
+2024-03-11,1,DEPO TL 11,1,1,260000,Orang/Shift,Hari Raya Nyepi,TNI,nyepi
+2024-03-12,2,DEPO TL 11,2,1,260000,Orang/Shift,Hari Raya Nyepi,TNI,nyepi
+2024-04-08,1,DEPO TL 11,1,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-09,2,DEPO TL 11,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-10,3,DEPO TL 11,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-11,4,DEPO TL 11,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-12,5,DEPO TL 11,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-15,6,DEPO TL 11,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-05-23,1,DEPO TL 11,1,1,260000,Orang/Shift,Hari Raya Waisak,TNI,waisak
+2024-05-24,2,DEPO TL 11,2,1,260000,Orang/Shift,Hari Raya Waisak,TNI,waisak
+2024-06-17,1,DEPO TL 11,1,1,260000,Orang/Shift,Hari Raya Idul Adha,TNI,idul adha
+2024-06-18,2,DEPO TL 11,2,1,260000,Orang/Shift,Hari Raya Idul Adha,TNI,idul adha
+2024-08-17,1,DEPO TL 11,1,1,260000,Orang/Shift,Hari Kemerdekaan Republik Indonesia,TNI,kemerdekaan
+2024-12-25,1,DEPO TL 11,1,1,260000,Orang/Shift,Hari Raya Natal,TNI,natal
+2024-12-26,2,DEPO TL 11,2,1,260000,Orang/Shift,Hari Raya Natal,TNI,natal
+2024-01-01,1,DEPO TRISAKTI,1,1,260000,Orang/Shift,Tahun Baru,TNI,masehi
+2024-02-09,1,DEPO TRISAKTI,1,1,260000,Orang/Shift,Tahun Baru Imlek,TNI,imlek
+2024-02-10,2,DEPO TRISAKTI,2,1,260000,Orang/Shift,Tahun Baru Imlek,TNI,imlek
+2024-03-11,1,DEPO TRISAKTI,1,1,260000,Orang/Shift,Hari Raya Nyepi,TNI,nyepi
+2024-03-12,2,DEPO TRISAKTI,2,1,260000,Orang/Shift,Hari Raya Nyepi,TNI,nyepi
+2024-04-08,1,DEPO TRISAKTI,1,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-09,2,DEPO TRISAKTI,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-10,3,DEPO TRISAKTI,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-11,4,DEPO TRISAKTI,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-12,5,DEPO TRISAKTI,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-15,6,DEPO TRISAKTI,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-05-23,1,DEPO TRISAKTI,1,1,260000,Orang/Shift,Hari Raya Waisak,TNI,waisak
+2024-05-24,2,DEPO TRISAKTI,2,1,260000,Orang/Shift,Hari Raya Waisak,TNI,waisak
+2024-06-17,1,DEPO TRISAKTI,1,1,260000,Orang/Shift,Hari Raya Idul Adha,TNI,idul adha
+2024-06-18,2,DEPO TRISAKTI,2,1,260000,Orang/Shift,Hari Raya Idul Adha,TNI,idul adha
+2024-08-17,1,DEPO TRISAKTI,1,1,260000,Orang/Shift,Hari Kemerdekaan Republik Indonesia,TNI,kemerdekaan
+2024-12-25,1,DEPO TRISAKTI,1,1,260000,Orang/Shift,Hari Raya Natal,TNI,natal
+2024-12-26,2,DEPO TRISAKTI,2,1,260000,Orang/Shift,Hari Raya Natal,TNI,natal
+2024-01-01,1,DEPO YONIF,1,1,260000,Orang/Shift,Tahun Baru,TNI,masehi
+2024-02-09,1,DEPO YONIF,1,1,260000,Orang/Shift,Tahun Baru Imlek,TNI,imlek
+2024-02-10,2,DEPO YONIF,2,1,260000,Orang/Shift,Tahun Baru Imlek,TNI,imlek
+2024-03-11,1,DEPO YONIF,1,1,260000,Orang/Shift,Hari Raya Nyepi,TNI,nyepi
+2024-03-12,2,DEPO YONIF,2,1,260000,Orang/Shift,Hari Raya Nyepi,TNI,nyepi
+2024-04-08,1,DEPO YONIF,1,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-09,2,DEPO YONIF,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-10,3,DEPO YONIF,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-11,4,DEPO YONIF,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-12,5,DEPO YONIF,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-15,6,DEPO YONIF,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-05-23,1,DEPO YONIF,1,1,260000,Orang/Shift,Hari Raya Waisak,TNI,waisak
+2024-05-24,2,DEPO YONIF,2,1,260000,Orang/Shift,Hari Raya Waisak,TNI,waisak
+2024-06-17,1,DEPO YONIF,1,1,260000,Orang/Shift,Hari Raya Idul Adha,TNI,idul adha
+2024-06-18,2,DEPO YONIF,2,1,260000,Orang/Shift,Hari Raya Idul Adha,TNI,idul adha
+2024-08-17,1,DEPO YONIF,1,1,260000,Orang/Shift,Hari Kemerdekaan Republik Indonesia,TNI,kemerdekaan
+2024-12-25,1,DEPO YONIF,1,1,260000,Orang/Shift,Hari Raya Natal,TNI,natal
+2024-12-26,2,DEPO YONIF,2,1,260000,Orang/Shift,Hari Raya Natal,TNI,natal
+2024-01-01,1,MEDAN,1,1,260000,Orang/Shift,Tahun Baru,TNI,masehi
+2024-02-09,1,MEDAN,1,1,260000,Orang/Shift,Tahun Baru Imlek,TNI,imlek
+2024-02-10,2,MEDAN,2,1,260000,Orang/Shift,Tahun Baru Imlek,TNI,imlek
+2024-03-11,1,MEDAN,1,1,260000,Orang/Shift,Hari Raya Nyepi,TNI,nyepi
+2024-03-12,2,MEDAN,2,1,260000,Orang/Shift,Hari Raya Nyepi,TNI,nyepi
+2024-04-08,1,MEDAN,1,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-09,2,MEDAN,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-10,3,MEDAN,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-11,4,MEDAN,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-12,5,MEDAN,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-15,6,MEDAN,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-05-23,1,MEDAN,1,1,260000,Orang/Shift,Hari Raya Waisak,TNI,waisak
+2024-05-24,2,MEDAN,2,1,260000,Orang/Shift,Hari Raya Waisak,TNI,waisak
+2024-06-17,1,MEDAN,1,1,260000,Orang/Shift,Hari Raya Idul Adha,TNI,idul adha
+2024-06-18,2,MEDAN,2,1,260000,Orang/Shift,Hari Raya Idul Adha,TNI,idul adha
+2024-08-17,1,MEDAN,1,1,260000,Orang/Shift,Hari Kemerdekaan Republik Indonesia,TNI,kemerdekaan
+2024-12-25,1,MEDAN,1,1,260000,Orang/Shift,Hari Raya Natal,TNI,natal
+2024-12-26,2,MEDAN,2,1,260000,Orang/Shift,Hari Raya Natal,TNI,natal
+2024-01-01,1,PERAK BARAT,1,1,260000,Orang/Shift,Tahun Baru,TNI,masehi
+2024-02-09,1,PERAK BARAT,1,1,260000,Orang/Shift,Tahun Baru Imlek,TNI,imlek
+2024-02-10,2,PERAK BARAT,2,1,260000,Orang/Shift,Tahun Baru Imlek,TNI,imlek
+2024-03-11,1,PERAK BARAT,1,1,260000,Orang/Shift,Hari Raya Nyepi,TNI,nyepi
+2024-03-12,2,PERAK BARAT,2,1,260000,Orang/Shift,Hari Raya Nyepi,TNI,nyepi
+2024-04-08,1,PERAK BARAT,1,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-09,2,PERAK BARAT,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-10,3,PERAK BARAT,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-11,4,PERAK BARAT,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-12,5,PERAK BARAT,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-15,6,PERAK BARAT,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-05-23,1,PERAK BARAT,1,1,260000,Orang/Shift,Hari Raya Waisak,TNI,waisak
+2024-05-24,2,PERAK BARAT,2,1,260000,Orang/Shift,Hari Raya Waisak,TNI,waisak
+2024-06-17,1,PERAK BARAT,1,1,260000,Orang/Shift,Hari Raya Idul Adha,TNI,idul adha
+2024-06-18,2,PERAK BARAT,2,1,260000,Orang/Shift,Hari Raya Idul Adha,TNI,idul adha
+2024-08-17,1,PERAK BARAT,1,1,260000,Orang/Shift,Hari Kemerdekaan Republik Indonesia,TNI,kemerdekaan
+2024-12-25,1,PERAK BARAT,1,1,260000,Orang/Shift,Hari Raya Natal,TNI,natal
+2024-12-26,2,PERAK BARAT,2,1,260000,Orang/Shift,Hari Raya Natal,TNI,natal
+2024-01-01,1,PKS 7,1,1,260000,Orang/Shift,Tahun Baru,TNI,masehi
+2024-02-09,1,PKS 7,1,1,260000,Orang/Shift,Tahun Baru Imlek,TNI,imlek
+2024-02-10,2,PKS 7,2,1,260000,Orang/Shift,Tahun Baru Imlek,TNI,imlek
+2024-03-11,1,PKS 7,1,1,260000,Orang/Shift,Hari Raya Nyepi,TNI,nyepi
+2024-03-12,2,PKS 7,2,1,260000,Orang/Shift,Hari Raya Nyepi,TNI,nyepi
+2024-04-08,1,PKS 7,1,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-09,2,PKS 7,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-10,3,PKS 7,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-11,4,PKS 7,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-12,5,PKS 7,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-15,6,PKS 7,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-05-23,1,PKS 7,1,1,260000,Orang/Shift,Hari Raya Waisak,TNI,waisak
+2024-05-24,2,PKS 7,2,1,260000,Orang/Shift,Hari Raya Waisak,TNI,waisak
+2024-06-17,1,PKS 7,1,1,260000,Orang/Shift,Hari Raya Idul Adha,TNI,idul adha
+2024-06-18,2,PKS 7,2,1,260000,Orang/Shift,Hari Raya Idul Adha,TNI,idul adha
+2024-08-17,1,PKS 7,1,1,260000,Orang/Shift,Hari Kemerdekaan Republik Indonesia,TNI,kemerdekaan
+2024-12-25,1,PKS 7,1,1,260000,Orang/Shift,Hari Raya Natal,TNI,natal
+2024-12-26,2,PKS 7,2,1,260000,Orang/Shift,Hari Raya Natal,TNI,natal
+2024-01-01,1,PONTIANAK,1,1,260000,Orang/Shift,Tahun Baru,TNI,masehi
+2024-02-09,1,PONTIANAK,1,1,260000,Orang/Shift,Tahun Baru Imlek,TNI,imlek
+2024-02-10,2,PONTIANAK,2,1,260000,Orang/Shift,Tahun Baru Imlek,TNI,imlek
+2024-03-11,1,PONTIANAK,1,1,260000,Orang/Shift,Hari Raya Nyepi,TNI,nyepi
+2024-03-12,2,PONTIANAK,2,1,260000,Orang/Shift,Hari Raya Nyepi,TNI,nyepi
+2024-04-08,1,PONTIANAK,1,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-09,2,PONTIANAK,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-10,3,PONTIANAK,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-11,4,PONTIANAK,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-12,5,PONTIANAK,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-15,6,PONTIANAK,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-05-23,1,PONTIANAK,1,1,260000,Orang/Shift,Hari Raya Waisak,TNI,waisak
+2024-05-24,2,PONTIANAK,2,1,260000,Orang/Shift,Hari Raya Waisak,TNI,waisak
+2024-06-17,1,PONTIANAK,1,1,260000,Orang/Shift,Hari Raya Idul Adha,TNI,idul adha
+2024-06-18,2,PONTIANAK,2,1,260000,Orang/Shift,Hari Raya Idul Adha,TNI,idul adha
+2024-08-17,1,PONTIANAK,1,1,260000,Orang/Shift,Hari Kemerdekaan Republik Indonesia,TNI,kemerdekaan
+2024-12-25,1,PONTIANAK,1,1,260000,Orang/Shift,Hari Raya Natal,TNI,natal
+2024-12-26,2,PONTIANAK,2,1,260000,Orang/Shift,Hari Raya Natal,TNI,natal
+2024-01-01,1,TAMBAK LANGON 11,1,1,260000,Orang/Shift,Tahun Baru,TNI,masehi
+2024-02-09,1,TAMBAK LANGON 11,1,1,260000,Orang/Shift,Tahun Baru Imlek,TNI,imlek
+2024-02-10,2,TAMBAK LANGON 11,2,1,260000,Orang/Shift,Tahun Baru Imlek,TNI,imlek
+2024-03-11,1,TAMBAK LANGON 11,1,1,260000,Orang/Shift,Hari Raya Nyepi,TNI,nyepi
+2024-03-12,2,TAMBAK LANGON 11,2,1,260000,Orang/Shift,Hari Raya Nyepi,TNI,nyepi
+2024-04-08,1,TAMBAK LANGON 11,1,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-09,2,TAMBAK LANGON 11,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-10,3,TAMBAK LANGON 11,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-11,4,TAMBAK LANGON 11,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-12,5,TAMBAK LANGON 11,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-15,6,TAMBAK LANGON 11,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-05-23,1,TAMBAK LANGON 11,1,1,260000,Orang/Shift,Hari Raya Waisak,TNI,waisak
+2024-05-24,2,TAMBAK LANGON 11,2,1,260000,Orang/Shift,Hari Raya Waisak,TNI,waisak
+2024-06-17,1,TAMBAK LANGON 11,1,1,260000,Orang/Shift,Hari Raya Idul Adha,TNI,idul adha
+2024-06-18,2,TAMBAK LANGON 11,2,1,260000,Orang/Shift,Hari Raya Idul Adha,TNI,idul adha
+2024-08-17,1,TAMBAK LANGON 11,1,1,260000,Orang/Shift,Hari Kemerdekaan Republik Indonesia,TNI,kemerdekaan
+2024-12-25,1,TAMBAK LANGON 11,1,1,260000,Orang/Shift,Hari Raya Natal,TNI,natal
+2024-12-26,2,TAMBAK LANGON 11,2,1,260000,Orang/Shift,Hari Raya Natal,TNI,natal
+2024-01-01,1,TAMBAK LANGON 5,1,1,260000,Orang/Shift,Tahun Baru,TNI,masehi
+2024-02-09,1,TAMBAK LANGON 5,1,1,260000,Orang/Shift,Tahun Baru Imlek,TNI,imlek
+2024-02-10,2,TAMBAK LANGON 5,2,1,260000,Orang/Shift,Tahun Baru Imlek,TNI,imlek
+2024-03-11,1,TAMBAK LANGON 5,1,1,260000,Orang/Shift,Hari Raya Nyepi,TNI,nyepi
+2024-03-12,2,TAMBAK LANGON 5,2,1,260000,Orang/Shift,Hari Raya Nyepi,TNI,nyepi
+2024-04-08,1,TAMBAK LANGON 5,1,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-09,2,TAMBAK LANGON 5,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-10,3,TAMBAK LANGON 5,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-11,4,TAMBAK LANGON 5,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-12,5,TAMBAK LANGON 5,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-15,6,TAMBAK LANGON 5,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-05-23,1,TAMBAK LANGON 5,1,1,260000,Orang/Shift,Hari Raya Waisak,TNI,waisak
+2024-05-24,2,TAMBAK LANGON 5,2,1,260000,Orang/Shift,Hari Raya Waisak,TNI,waisak
+2024-06-17,1,TAMBAK LANGON 5,1,1,260000,Orang/Shift,Hari Raya Idul Adha,TNI,idul adha
+2024-06-18,2,TAMBAK LANGON 5,2,1,260000,Orang/Shift,Hari Raya Idul Adha,TNI,idul adha
+2024-08-17,1,TAMBAK LANGON 5,1,1,260000,Orang/Shift,Hari Kemerdekaan Republik Indonesia,TNI,kemerdekaan
+2024-12-25,1,TAMBAK LANGON 5,1,1,260000,Orang/Shift,Hari Raya Natal,TNI,natal
+2024-12-26,2,TAMBAK LANGON 5,2,1,260000,Orang/Shift,Hari Raya Natal,TNI,natal
+2024-01-01,1,TELUK BAYUR,1,1,260000,Orang/Shift,Tahun Baru,TNI,masehi
+2024-02-09,1,TELUK BAYUR,1,1,260000,Orang/Shift,Tahun Baru Imlek,TNI,imlek
+2024-02-10,2,TELUK BAYUR,2,1,260000,Orang/Shift,Tahun Baru Imlek,TNI,imlek
+2024-03-11,1,TELUK BAYUR,1,1,260000,Orang/Shift,Hari Raya Nyepi,TNI,nyepi
+2024-03-12,2,TELUK BAYUR,2,1,260000,Orang/Shift,Hari Raya Nyepi,TNI,nyepi
+2024-04-08,1,TELUK BAYUR,1,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-09,2,TELUK BAYUR,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-10,3,TELUK BAYUR,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-11,4,TELUK BAYUR,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-12,5,TELUK BAYUR,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-15,6,TELUK BAYUR,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-05-23,1,TELUK BAYUR,1,1,260000,Orang/Shift,Hari Raya Waisak,TNI,waisak
+2024-05-24,2,TELUK BAYUR,2,1,260000,Orang/Shift,Hari Raya Waisak,TNI,waisak
+2024-06-17,1,TELUK BAYUR,1,1,260000,Orang/Shift,Hari Raya Idul Adha,TNI,idul adha
+2024-06-18,2,TELUK BAYUR,2,1,260000,Orang/Shift,Hari Raya Idul Adha,TNI,idul adha
+2024-08-17,1,TELUK BAYUR,1,1,260000,Orang/Shift,Hari Kemerdekaan Republik Indonesia,TNI,kemerdekaan
+2024-12-25,1,TELUK BAYUR,1,1,260000,Orang/Shift,Hari Raya Natal,TNI,natal
+2024-12-26,2,TELUK BAYUR,2,1,260000,Orang/Shift,Hari Raya Natal,TNI,natal
+2024-01-01,1,TPIL IX,1,1,260000,Orang/Shift,Tahun Baru,TNI,masehi
+2024-02-09,1,TPIL IX,1,1,260000,Orang/Shift,Tahun Baru Imlek,TNI,imlek
+2024-02-10,2,TPIL IX,2,1,260000,Orang/Shift,Tahun Baru Imlek,TNI,imlek
+2024-03-11,1,TPIL IX,1,1,260000,Orang/Shift,Hari Raya Nyepi,TNI,nyepi
+2024-03-12,2,TPIL IX,2,1,260000,Orang/Shift,Hari Raya Nyepi,TNI,nyepi
+2024-04-08,1,TPIL IX,1,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-09,2,TPIL IX,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-10,3,TPIL IX,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-11,4,TPIL IX,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-12,5,TPIL IX,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-04-15,6,TPIL IX,2,1,260000,Orang/Shift,Hari Raya Idul Fitri,TNI,idul fitri
+2024-05-23,1,TPIL IX,1,1,260000,Orang/Shift,Hari Raya Waisak,TNI,waisak
+2024-05-24,2,TPIL IX,2,1,260000,Orang/Shift,Hari Raya Waisak,TNI,waisak
+2024-06-17,1,TPIL IX,1,1,260000,Orang/Shift,Hari Raya Idul Adha,TNI,idul adha
+2024-06-18,2,TPIL IX,2,1,260000,Orang/Shift,Hari Raya Idul Adha,TNI,idul adha
+2024-08-17,1,TPIL IX,1,1,260000,Orang/Shift,Hari Kemerdekaan Republik Indonesia,TNI,kemerdekaan
+2024-12-25,1,TPIL IX,1,1,260000,Orang/Shift,Hari Raya Natal,TNI,natal
+2024-12-26,2,TPIL IX,2,1,260000,Orang/Shift,Hari Raya Natal,TNI,natal

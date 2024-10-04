@@ -1,0 +1,417 @@
+<style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+    .custom-table {
+      border: 1px solid black;
+      border-collapse: collapse;
+      font-family: modern-bootstrap;
+      font-size: 16;
+    }
+    .text-center {
+      text-align: center;
+    }
+    .underline {
+      text-decoration: underline;
+    }
+     .custom-table-sign th, .custom-table-sign td {
+      width: 50%; /* Each column will take up 50% of the table's width */
+    }
+
+    td{
+      text-align: center;
+    }
+
+    .pihak-pertama-nama{
+      text-align: center;
+      border: none;
+      line-height: 25px;
+      font-weight: bold;
+      text-decoration: underline;
+      margin: 4;
+      font-family: modern-bootstrap;
+      font-size: 16;
+    }
+
+    .pihak-pertama-jabatan {
+      text-align: center; 
+      border: none;
+      font-weight: bold; 
+      font-size: 16;
+      font-family: modern-bootstrap;
+    }
+
+    .pihak-kedua-nama {
+      text-align: center; 
+      border: none; 
+      font-weight: bold; 
+      font-size: 16;
+      text-decoration: underline;
+      margin-bottom: 4;
+      font-family: modern-bootstrap;
+    } 
+
+    .pihak-kedua-jabatan{
+      text-align: center; 
+      border: none; 
+      font-weight: bold; 
+      font-size: 16;
+      font-family: modern-bootstrap;
+    }
+    .pihak-ketiga-nama {
+      text-align: center; 
+      border: none; 
+      font-weight: bold; 
+      font-size: 16;
+      text-decoration: underline;
+      margin-bottom: 4;
+      font-family: modern-bootstrap;
+    } 
+    .pihak-ketiga-jabatan{
+      text-align: center; 
+      border: none; 
+      font-weight: bold; 
+      font-size: 16;
+      font-family: modern-bootstrap;
+    }
+    
+    .form-container {
+      display: flex;
+      align-items: center;
+      margin-bottom: -20px;
+      padding-right: 200px;
+    }
+    .label {
+      margin-right: 10px; /* Adjust this value as needed */
+      flex-shrink: 0; /* Prevent the label from shrinking */
+    }
+
+    .input-wrapper {
+      display: flex;
+      align-items: center;
+      flex-grow: 1; /* Allows the input container to take up remaining space */
+    }
+
+    .input-wrapper p {
+      margin: 0 10px 0 0; /* Margin between colon and input */
+    }
+
+    .perihal {
+      border: none;
+      width: 100%; /* Takes up full width of the container */
+      box-sizing: border-box; /* Ensures padding is included in the width calculation */
+      font-family: modern-bootstrap;
+      font-size: 16;
+    }
+
+    .nomor_surat {
+
+      border: none; 
+      font-family: modern-bootstrap;
+      font-size: 16;
+    }
+
+    .date {
+      border: none;
+      font-family: modern-bootstrap;
+      font-size: 16;
+      text-align: right;
+    }
+
+    .delete-icon,
+    .add-icon {
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s, visibility 0.3s;
+    }
+
+    .row:hover .delete-icon,
+    .row:hover .add-icon {
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    .form-group {
+      margin-bottom: -15px;
+    }
+  </style>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+  <div class="tnr" style="width: 794px; margin: 0 auto; position: relative;;">
+    <header>
+      <div style="text-align: center; margin-bottom: 20px">
+        <p style="font-size: 15px;">RENCANA ANGGARAN BIAYA </p>
+        <div style="position: absolute; top: 0; right: 0;">
+          <p><input value="{{ current_date }}" class="date"></input></p>
+      </div>
+      </div>
+      <div>
+        <div class="form-container">
+          <p class="label">Hal</p>
+          <div class="input-wrapper">
+            <p>:</p>
+            <input type="text" class="perihal" value="{{perihal}}">
+          </div>
+        </div>
+        <div style="display: flex; align-items: center; margin-bottom: -20px;">
+          <p style="margin-right: 15px;">No</p>
+          <p style="margin: 0; flex-grow: 1; display: flex; align-items: center;">
+            :
+          </p>
+          <input type="text" class="nomor_surat" value="{{nomor_surat}}" style="border: none; width: 100%; box-sizing: border-box; margin-left: 10px;">
+        </div>
+      </div>
+    </header>
+  
+    {% if rab %}
+    <div>
+      <table class="custom-table">
+          <thead>
+              <tr class="custom-table">
+                  <th class="custom-table">Tanggal</th>
+                  <th class="custom-table">Lokasi</th>
+                  <th class="custom-table">Event</th>
+                  <th class="custom-table">Shift</th>
+                  <th class="custom-table">Jumlah Personil</th>
+                  <th class="custom-table">Biaya / Personil</th>
+                  <th class="custom-table">Total Biaya</th>
+                  <th>Personil</th>
+              </tr>
+          </thead>
+          <tbody id="rabTableBody">
+              {% for data in rab %}
+              <tr class="row">
+                  <td class="custom-table" contenteditable="true">{{ data['Tanggal'] }}</td>
+                  <td class="custom-table" contenteditable="true">{{ data['Lokasi'] }}</td>
+                  <td class="custom-table" contenteditable="true">{{ data['Event'] }}</td>
+                  <td class="custom-table sum-shift" contenteditable="true" oninput="calculateSumShift(this, 'sum-shift')">{{ data['Shift'] }}</td>
+                  <td class="custom-table sum-jumlah-personil" contenteditable="true" oninput="calculateSumShift(this, 'sum-jumlah-personil')">{{ data['Jumlah Personil'] }}</td>
+                  <td class="custom-table biaya" id="biaya" oninput="calculateSumShift(this, 'biaya')">Rp {{ biaya_personil }}</td>
+                  <td class="custom-table total-biaya" contenteditable="true" oninput="calculateSumTotalBiaya()">{{ data['IDR Format Total Biaya'] }}</td>
+                  <td style="border-bottom: 1px solid black;" contenteditable="true">{{ data['Personil'] }}</td>
+                  <td class="delete-cell" style="position: absolute; width: 0; visibility: hidden;">
+                      <span class="delete-icon" style="margin-left: 10px;" onclick="deleteRow(this)"><i class="bi bi-trash" style="color: red;"></i></span>
+                  </td>
+                  <td class="add-cell" style="position: absolute; width: 0; visibility: hidden;">
+                    <span class="add-icon" style="margin-left: 30px; margin-top: -30px;" onclick="addRow(this)"><i class="bi bi-plus-circle" style="color: green;"></i></span>
+                </td>
+                </div>
+              </tr>
+              {% endfor %}
+              <tr>
+                  <td style="font-weight: bold;" class="custom-table">Total</td>
+                  <td class="custom-table"></td>
+                  <td class="custom-table"></td>
+                  <td class="custom-table" id="sum-shift">{{sum_shift}}</td>
+                  <td class="custom-table" id="sum-jumlah-personil">{{sum_jumlah_personil}}</td>
+                  <td class="custom-table"></td>
+                  <td class="custom-table" id="total-biaya">{{idr_format_sum_total_biaya}}</td>
+                  <td></td>
+              </tr>
+          </tbody>
+      </table>
+  </div>
+    {% endif %} {% if json_predictions %}
+  
+    <table class="table custom-table">
+      <thead class="custom-table">
+        <tr class="custom-table">
+          <th class="custom-table text-center">TANGGAL</th>
+          <th class="custom-table text-center">SHIFT</th>
+          <th class="custom-table text-center">JUMLAH PERSONIL</th>
+          <th class="custom-table text-center">HARGA SATUAN</th>
+          <th class="custom-table text-center">ORANG/SHIFT</th>
+          <th class="custom-table text-center">JUMLAH</th>
+        </tr>
+      </thead>
+  
+      <tbody class="custom-table">
+        {% for prediction in json_predictions %}
+        <tr>
+          <td class="custom-table text-center">{{ prediction['Tanggal'] }}</td>
+          <td class="custom-table text-center" >{{ prediction['Shift'] }}</td>
+          <td class="custom-table text-center">
+            {{ prediction['Jumlah Personil'] }}
+          </td>
+          <td class="custom-table text-center">
+            {{ prediction['IDR Format Biaya / Personil'] }}
+          </td>
+          <td class="custom-table text-center">{{ prediction['Personil'] }}</td>
+          <td class="custom-table text-center">
+            {{ prediction['IDR Format Total Biaya'] }}
+          </td>
+        </tr>
+      {% endfor %}
+      <tr>
+        <td class="custom-table text-center">Total</td>
+        <td class="custom-table text-center"></td>
+        <td class="custom-table text-center">
+        </td>
+        <td class="custom-table text-center">
+        </td>
+        <td class="custom-table text-center">
+        </td>
+        <td class="custom-table text-center">
+        </td>
+      </tr>
+      </tbody>
+  
+      {% endif %}
+    </table>
+    <p style="font-family: modern-bootstrap;">Note</p>
+    <div class="form-group" >
+      <textarea style="height: 200px; width: 100%; padding: -10px; border: none; margin-top: 7; overflow: hidden; resize: none; font-family: modern-bootstrap; margin-bottom:-30px; margin: -30px; font-size: 16px; margin-top: -20px; margin-left: 10px;" id="note"  name="note"
+      placeholder="1. Support BKO PAM {{events}} {{year}} &#10;2. BKO ditempatkan di {{selected_lokasi}} &#10;3. Shift 1 pukul 08:00-20:00&#10;4. Shift 2 pukul 20:00-08:00&#10;. Penjagaan dimulai dari tanggal {{first_date}} s/d {{last_date}}">
+      {% for line in note.split('\n') %}
+    {{ line }}
+    {% endfor %}
+    </textarea>
+    </div>
+    <div style="margin-top: 50px">Approved by,</div>
+    <table class="table custom-table-sign">
+      <thead class="custom-table">
+        <tr class="custom-table">
+          <th class="custom-table text-center" style="height: 35px">
+            Menyetujui, 
+          </th>
+          <th class="custom-table text-center">Menyetujui, </th>
+          <th class="custom-table text-center">Menyetujui, </th>
+        </tr>
+      </thead>
+      <tbody class="custom-table">
+        <tr>
+          <td class="custom-table" style="height: 150px"></td>
+          <td class="custom-table text-center" style="height: 150px"></td>
+        </tr>
+      </tbody>
+      <tbody class="custom-table">
+        <tr>
+          <td class="custom-table text-center" style="padding: 10px">
+            <div >
+              <input class="pihak-pertama-nama" value="{{pihak_pertama_nama}}"></input>
+            </div>
+            <div class="pihak_pertama_jabatan">
+              <input class="pihak-pertama-jabatan"style="margin-top: 0px"  value="{{pihak_pertama_jabatan}}"></input>
+            </div>
+          </td>
+          <td class="custom-table text-center" style="padding: 10px">
+            <div >
+              <input class="pihak-kedua-nama"  value="{{pihak_kedua_nama}}"></input>
+            </div>
+            <div >
+            <input  class="pihak-kedua-jabatan" style="margin-top: 0px" value="{{pihak_kedua_jabatan}}"></input>
+            </div>
+          </td>
+          <td class="custom-table text-center" style="padding: 10px">
+            <div >
+              <input class="pihak-ketiga-nama"  value="{{pihak_ketiga_nama}}"></input>
+            </div>
+            <div >
+            <input  class="pihak-ketiga-jabatan" style="margin-top: 0px" value="{{pihak_ketiga_jabatan}}"></input>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+      $(document).ready(function() {
+    $('.row').hover(
+         function() {
+            $(this).find('.delete-icon').css({'opacity': 1, 'visibility': 'visible'});
+            $(this).find('.add-icon').css({'opacity': 1, 'visibility': 'visible'});
+        },
+        function() {
+            $(this).find('.delete-icon').css('opacity', 0);
+            $(this).find('.add-icon').css('opacity', 0);
+        }
+    );
+});
+
+
+    function deleteRow(element) {
+      if (confirm("Anda yakin akan menghapus data ini?")) {
+        var row = $(element).closest('tr').remove();
+      }
+    }
+
+    function addRow(element) {
+        // Find the closest <tr> element to the clicked icon
+        var currentRow = $(element).closest('tr');
+
+        var biayaElement = document.getElementById('biaya');
+        var biayaPersonil = parseCurrencyShift(biayaElement.innerText);
+
+        // Create a new row HTML
+        var newRow = `
+          <tr class="row">
+            <td class="custom-table" contenteditable="true"></td>
+            <td class="custom-table" contenteditable="true"></td>
+            <td class="custom-table" contenteditable="true"></td>
+            <td class="custom-table sum-shift" contenteditable="true" oninput="calculateSumShift(this, 'sum-shift')"></td>
+            <td class="custom-table sum-jumlah-personil" contenteditable="true" oninput="calculateSumShift(this, 'sum-jumlah-personil')"></td>
+            <td class="custom-table biaya" oninput="calculateSumShift(this, 'biaya')">Rp ${biayaPersonil}</td>
+            <td class="custom-table total-biaya" oninput="calculateSumTotalBiaya()"></td>
+            <td style="border-bottom: 1px solid black;" contenteditable="true">TNI</td>
+            <td class="delete-cell" style="position: absolute; width: 0; visibility: visible;">
+              <span class="delete-icon" style="margin-left: 10px;" onclick="deleteRow(this)"><i class="bi bi-trash" style="color: red;"></i></span>
+            </td>
+            <td class="add-cell" style="position: absolute; width: 0; visibility: visible;">
+              <span class="add-icon" style="margin-left: 30px; margin-top: -30px;" onclick="addRow(this)"><i class="bi bi-plus-circle" style="color: green;"></i></span>
+            </td>
+          </tr>
+        `;
+
+      // Insert the new row after the current row
+      currentRow.after(newRow);
+
+    }
+
+    function parseCurrencyShift(value) {
+        // Remove non-numeric characters and convert to integer
+        return parseInt(value.replace(/\D/g, ''), 10) || 0;
+    }
+
+    function calculateSumShift(element, className) {
+      let sum = 0;
+      document.querySelectorAll('.' + className).forEach(cell => {
+        let value = parseInt(cell.innerText) || 0;
+        sum += value;
+      });
+      document.getElementById(className).innerText = sum;
+      updateRowTotalBiaya(element.closest('.row'));
+      calculateSumTotalBiaya()
+    }
+
+    function parseCurrency(value) {
+      return parseInt(value.replace(/[^0-9]/g, ''), 10) || 0;
+    }
+
+    calculateSumTotalBiaya()
+
+    function calculateSumTotalBiaya() {
+      let sum = 0;
+      document.querySelectorAll('.total-biaya').forEach(cell => {
+        let value = parseCurrency(cell.innerText);
+        sum += value;
+      });
+      document.getElementById('total-biaya').innerText = `Rp ${sum.toLocaleString('id-ID')}`;
+    }
+
+    function calculateTotalBiaya(row) {
+      const shift = parseInt(row.querySelector('.sum-shift').innerText) || 0;
+      const jumlahPersonil = parseInt(row.querySelector('.sum-jumlah-personil').innerText) || 0;
+      const biayaPersonil = parseCurrency(row.querySelector('.biaya').innerText) || 0;
+      return shift * jumlahPersonil * biayaPersonil ;
+    }
+
+    function updateRowTotalBiaya(row) {
+        const totalBiaya = calculateTotalBiaya(row);
+        row.querySelector('.total-biaya').innerText = `Rp ${totalBiaya.toLocaleString('id-ID')}`;
+        // calculateSumTotalBiaya();
+    }
+  </script>

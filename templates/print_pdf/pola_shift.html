@@ -1,0 +1,234 @@
+<style>
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+  }
+  .custom-table {
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+  .text-center {
+    text-align: center;
+  }
+  .underline {
+    text-decoration: underline;
+  }
+  .custom-table-sign th,
+  .custom-table-sign td {
+    width: 50%; 
+  }
+  .header{
+    text-align: center;
+    font-weight: bold;
+    border: none;
+    font-size: 15px; 
+    line-height: 25px;
+    font-family: modern-bootstrap;
+  }
+  .sign-name{
+    text-align: center;
+    font-weight: bold;
+    border: none;
+    font-size: 15px; 
+    line-height: 25px;
+    text-decoration: underline;
+    font-family: modern-bootstrap;
+  }
+  .sign-jabatan{
+    text-align: center;
+    font-weight: bold;
+    border: none;
+    font-size: 15px; 
+    line-height: 25px;
+    width: 100%; 
+    font-family: modern-bootstrap;
+  }
+  .city-date {
+    text-align: center;
+    font-weight: bold;
+    border: none;
+    font-size: 15px; 
+    line-height: 25px;
+    text-decoration: underline;
+    font-family: modern-bootstrap;
+  }
+  .location {
+    text-align: center;
+    font-weight: bold;
+    border: none;
+    font-size: 15px; 
+    line-height: 25px;
+    font-family: modern-bootstrap;
+  }
+  .delete-icon,
+    .add-icon {
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s, visibility 0.3s;
+    }
+
+    .row:hover .delete-icon,
+    .row:hover .add-icon {
+        opacity: 1;
+        visibility: visible;
+    }
+</style>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+<!-- width a4 -->
+<div class="tnr" style="width: 1122px; margin: 0 auto">
+  <header>
+    <div style="display: flex; flex-direction: column;">
+      <input value="JADWAL JAGA SEKURITI {{location}}" class="header" > </input>
+      <input value="POS JAGA UNIT {{location}}" class="header" > </input>
+      <input value="PERIODE: {{header_date}}" class="header" > </input>
+    </div>
+  </header>
+
+  <table class="table custom-table" style="margin-top: 30px;">
+    <thead class="custom-table">
+      <tr class="custom-table">
+        <th class="custom-table text-center">NO.</th>
+        <th class="custom-table text-center">TANGGAL</th>
+        {% for date in date_range %}
+        <th class="custom-table text-center" style="min-width: 28px; font-family: modern-bootstrap;">
+          {{ date.day }}
+        </th>
+        {% endfor %}
+      </tr>
+    </thead>
+    <thead class="custom-table">
+      <tr class="custom-table">
+        <th class="custom-table text-center"></th>
+        <th class="custom-table text-center">NAMA / HARI</th>
+        {% for date in days_abbr %}
+          {% set shift_for_date = person_shifts | list %}
+          <th class="text-center custom-table" style="height: 40px; font-size: 15px; font-family: modern-bootstrap;" contenteditable="true" class="shift-cell" data-name="{{ name }}">
+              {{date}}
+          </th>
+          {% endfor %}
+          
+    </thead>
+
+    <tbody>
+      {% set name_set = schedules | map(attribute='nama') | list | unique %}
+      {% for name in name_set %}
+      {% set person_shifts = schedules | selectattr('nama', 'equalto', name) | list %}
+      <tr class="custom-table row">
+          <td class="text-center custom-table" contenteditable="true">{{ loop.index }}</td>
+          <td class="custom-table" style="padding: 5px; font-family: modern-bootstrap;" contenteditable="true">{{ name }}</td>
+          {% for date in date_range %}
+          {% set shift_for_date = person_shifts | selectattr('tanggal', 'equalto', date.strftime('%Y-%m-%d')) | list %}
+          <td class="text-center custom-table shift-cell" style="height: 40px; font-size: 15px; {{'color: red;' if 'OFF' in shift_for_date | map(attribute='shift') }}" contenteditable="true" data-name="{{ name }}" data-date="{{ date.strftime('%Y-%m-%d') }}">
+              {% if shift_for_date %}
+                  {% for shift in shift_for_date %}
+                      {{ shift['shift'] }}
+                  {% endfor %}
+              {% else %}
+                  -
+              {% endif %}
+          </td>
+          {% endfor %}
+          <td class="delete-cell" style="position: absolute; width: 0; visibility: visible; display: flex; align-items: center; height: 40px; background-color: white;">
+            <span class="delete-icon" style="margin-left: 10px;" onclick="deleteRow(this)"><i class="bi bi-trash" style="color: red;"></i></span>
+        </td>
+        <td class="add-cell" style="position: absolute; width: 0; visibility: visible; display: flex; align-items: center; height: 40px;  background-color: white;">
+          <span class="add-icon" style="margin-left: 30px;" onclick="addRow(this)"><i class="bi bi-plus-circle" style="color: green;"></i></span>
+      </td>
+      </tr>
+     
+      {% endfor %}
+  </tbody>
+  </table>
+
+    <p style="margin-bottom: -6px">Catatan:</p>
+    <div style="display: flex">
+      <div style="line-height: 6px; font-size: 16px; width: 70%">
+
+        <textarea style="height: 150px; width: 60%; padding: 10px; border: none; margin-top: 10px; overflow: hidden; resize: none; font-family: modern-bootstrap; font-size: 16px; line-height: 10px;" id="note"  name="note"
+        placeholder="1. Support BKO PAM {{events}} {{year}} &#10;2. BKO ditempatkan di {{selected_lokasi}} &#10;3. Shift 1 pukul 08:00-20:00&#10;4. Shift 2 pukul 20:00-08:00&#10;. Penjagaan dimulai dari tanggal {{first_date}} s/d {{last_date}}">
+        {% for Catatan in note_schedule.split('\n')%}
+          {{ Catatan }}
+        {%endfor%}
+       </textarea>
+      </div>
+      <table class="table" style="width: 30%">
+        <thead class="">
+          <tr class="" style="line-height: 5px">
+            <th class="text-center" style="font-size: 14px; border: 1px solid white;">
+              <input value="{{ kota }}, {{ signature_date }} " class="city-date"></input>
+              <input value="{{ location }}" class="location"></input>
+            </th>
+          </tr>
+        </thead>
+        <tbody class="">
+          <tr>
+            <td class="text-center" style="height: 90px; border: 1px solid white;"></td>
+          </tr>
+        </tbody>
+        <tbody class="">
+          <tr>
+            <td class="text-center" style="font-weight: bold; line-height: 5px; border: 1px solid white;">
+              <input class="sign-name" style="margin-bottom: -4px" value="{{ schedule_sign_name }}">  </input>
+              <input style="font-weight: bold" class="sign-jabatan" value="{{schedule_sign_jabatan}}"></input>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+</html>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+ function addRow(element) {
+    var currentRow = $(element).closest('tr');
+    var dateColumnCount = currentRow.children('td').length - 4; // Adjust this based on your table structure
+
+    var dateCells = '';
+    for (var i = 0; i < dateColumnCount; i++) {
+        dateCells += `
+            <td class="text-center custom-table" style="height: 40px; font-size: 15px;" contenteditable="true" class="shift-cell" data-date="">
+                
+            </td>
+        `;
+    }
+
+    var newRow = `
+        <tr class="custom-table row">
+            <td class="text-center custom-table" contenteditable="true"></td>
+            <td class="custom-table" style="padding: 5px;" contenteditable="true"></td>
+            ${dateCells}
+            <td class="delete-cell" style="position: absolute; width: 0; visibility: visible; display: flex; align-items: center; height: 40px; background-color: white;">
+                <span class="delete-icon" style="margin-left: 10px;" onclick="deleteRow(this)"><i class="bi bi-trash" style="color: red;"></i></span>
+            </td>
+            <td class="add-cell" style="position: absolute; width: 0; visibility: visible; display: flex; align-items: center; height: 40px; background-color: white;">
+                <span class="add-icon" style="margin-left: 30px;" onclick="addRow(this)"><i class="bi bi-plus-circle" style="color: green;"></i></span>
+            </td>
+        </tr>
+    `;
+    currentRow.after(newRow);
+}
+
+
+
+  function deleteRow(element) {
+    if (confirm("Anda yakin akan menghapus data ini?")) {
+      $(element).closest('tr').remove();
+    }
+  }
+
+  $(document).ready(function() {
+      $('.row').hover(
+          function() {
+              $(this).find('.delete-icon').css({'opacity': 1, 'visibility': 'visible'});
+              $(this).find('.add-icon').css({'opacity': 1, 'visibility': 'visible'});
+          },
+          function() {
+              $(this).find('.delete-icon').css('opacity', 0);
+              $(this).find('.add-icon').css('opacity', 0);
+          }
+      );
+  });
+</script>

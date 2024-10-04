@@ -1,0 +1,172 @@
+{% extends "base.html" %}
+
+{% block title %}Data BKO{% endblock %}
+
+{% block content %}
+<h2>Input Data BKO</h2>
+<form method="POST" action="{{ url_for('bko.bko') }}">
+    <div class="row">
+        <div class="form-group col-md-6">
+            <label for="lokasi_id">Lokasi</label>
+            <select class="form-control" id="lokasi_id" name="lokasi_id" required>
+                {% for lokasi in lokasi_data %}
+                    <option value="{{ lokasi.id }}">{{ lokasi.nama_lokasi }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="shift">Shift</label>
+            <input type="text" class="form-control" id="shift" name="shift" required>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-md-6">
+            <label for="jumlah_personil">Jumlah Personil</label>
+            <input type="number" class="form-control" id="jumlah_personil" name="jumlah_personil" required>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="personil">Personil</label>
+            <input type="text" class="form-control" id="personil" name="personil" required>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-md-6">
+            <label for="harga_satuan">Harga Satuan</label>
+            <input type="number" step="0.01" class="form-control" id="harga_satuan" name="harga_satuan" required>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="satuan">Satuan</label>
+            <input type="text" class="form-control" id="satuan" name="satuan" required>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="event">Event</label>
+        <input type="text" class="form-control" id="event" name="event" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<form method="GET" action="{{ url_for('bko.bko') }}">
+    <div class="form-group">
+        <label for="filter_lokasi_id">Filter berdasarkan lokasi</label>
+        <select class="form-control" id="filter_lokasi_id" name="filter_lokasi_id">
+            <option value="">-- Semua Lokasi --</option>
+            {% for lokasi in lokasi_data %}
+                <option value="{{ lokasi.id }}">{{ lokasi.nama_lokasi }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Filter</button>
+</form>
+
+<h2 class="mt-5">Daftar Data BKO</h2>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Lokasi</th>
+                <th>Shift</th>
+                <th>Jumlah Personil</th>
+                <th>Harga Satuan</th>
+                <th>Satuan</th>
+                <th>Event</th>
+                <th>Personil</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for bko in bko_data_paginated.items %}
+                <tr data-id="{{ bko.id }}">
+                    <td class="lokasi_id" data-id="{{ bko.lokasi.id }}">{{ bko.lokasi.nama_lokasi }}</td>
+                    <td class="shift">{{ bko.shift }}</td>
+                    <td class="jumlah_personil">{{ bko.jumlah_personil }}</td>
+                    <td class="harga_satuan">{{ bko.harga_satuan }}</td>
+                    <td class="satuan">{{ bko.satuan }}</td>
+                    <td class="event">{{ bko.event }}</td>
+                    <td class="personil">{{ bko.personil }}</td>
+                    <td>
+                        <button class="btn btn-warning btn-sm edit-btn">Edit</button>
+                        <button class="btn btn-success btn-sm save-btn" style="display:none;">Simpan</button>
+                        <form action="{{ url_for('bko.delete_bko', id=bko.id) }}" method="POST" style="display:inline;">
+                            <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="d-flex justify-content-center">
+        <div class="pagination">
+            {% if bko_data_paginated.has_prev %}
+                <a href="{{ url_for('bko.bko', page=1) }}" class="btn btn-secondary">« First</a>
+                <a href="{{ url_for('bko.bko', page=bko_data_paginated.prev_num) }}" class="btn btn-secondary">‹ Previous</a>
+            {% endif %}
+            {% for page_num in bko_data_paginated.iter_pages() %}
+                {% if page_num %}
+                    {% if page_num == bko_data_paginated.page %}
+                        <span class="btn btn-secondary active">{{ page_num }}</span>
+                    {% else %}
+                        <a href="{{ url_for('bko.bko', page=page_num) }}" class="btn btn-secondary">{{ page_num }}</a>
+                    {% endif %}
+                {% else %}
+                    <span class="btn btn-secondary disabled">…</span>
+                {% endif %}
+            {% endfor %}
+            {% if bko_data_paginated.has_next %}
+                <a href="{{ url_for('bko.bko', page=bko_data_paginated.next_num) }}" class="btn btn-secondary">Next ›</a>
+                <a href="{{ url_for('bko.bko', page=bko_data_paginated.pages) }}" class="btn btn-secondary">Last »</a>
+            {% endif %}
+        </div>
+    </div>
+    <a href="{{ url_for('bko.download_bko') }}" class="btn btn-success mt-3">Download CSV</a>
+</div>
+
+<script>
+$(document).ready(function() {
+    $('.edit-btn').on('click', function() {
+        var row = $(this).closest('tr');
+        row.find('td').not('.lokasi_id').prop('contenteditable', true);
+        row.find('.edit-btn').hide();
+        row.find('.save-btn').show();
+    });
+
+    $(document).on('click', '.save-btn', function() {
+        var row = $(this).closest('tr');
+        var id = row.data('id');
+        var lokasi_id = row.find('.lokasi_id').data('id');
+        var shift = row.find('.shift').text();
+        var jumlah_personil = row.find('.jumlah_personil').text();
+        var harga_satuan = row.find('.harga_satuan').text();
+        var satuan = row.find('.satuan').text();
+        var event = row.find('.event').text();
+        var personil = row.find('.personil').text();
+
+        $.ajax({
+            url: "{{ url_for('bko.update_bko') }}",
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify({
+                id: id,
+                lokasi_id: lokasi_id,
+                shift: shift,
+                jumlah_personil: jumlah_personil,
+                harga_satuan: harga_satuan,
+                satuan: satuan,
+                event: event,
+                personil: personil
+            }),
+            success: function(response) {
+                if (response.status == 'success') {
+                    alert('Data berhasil diperbarui!');
+                    row.find('td').prop('contenteditable', false);
+                    row.find('.save-btn').hide();
+                    row.find('.edit-btn').show();
+                } else {
+                    alert('Terjadi kesalahan: ' + response.message);
+                }
+            }
+        });
+    });
+});
+</script>
+{% endblock %}

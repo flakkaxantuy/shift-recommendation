@@ -1,0 +1,310 @@
+{% extends 'base.html' %}
+
+{% block title %}Input Data Shift{% endblock %}
+
+{% block content %}
+<!-- Form untuk jumlah entri -->
+<form id="numEntriesForm">
+    <label for="num_entries">Jumlah Data yang Ingin Diinput:</label>
+    <input type="number" id="num_entries" name="num_entries" min="1" required>
+    <button type="button" class="btn btn-primary" onclick="generateInputForms()">Submit</button>
+</form>
+
+<hr>
+
+<!-- Container untuk input forms -->
+<div id="inputForms"></div>
+
+<hr>
+
+<!-- Daftar Shift -->
+<div class="mt-5 ml-5 mr-5 mb-5" id="daftarShift">
+    <h2>Daftar Shift</h2>
+    <div class="row">
+        <div class="col-md-4">
+            <label for="lokasiSelect" class="form-label">Filter berdasarkan Lokasi:</label>
+            <form id="lokasiFilterForm">
+                <select class="form-control" id="lokasiSelect" name="lokasi_id">
+                    <option value="">Pilih Lokasi</option>
+                    {% for lokasi in lokasis %}
+                    <option value="{{ lokasi.id }}" {% if lokasi.id == lokasi_id %} selected {% endif %}>{{ lokasi.nama_lokasi }}</option>
+                    {% endfor %}
+                </select>
+                <button type="submit" class="btn btn-primary mt-2" id="lokasiFilterBtn">Filter</button>
+            </form>
+        </div>
+        <div class="col-md-4">
+            <label for="tanggalInput" class="form-label">Filter berdasarkan Tanggal:</label>
+            <form id="tanggalFilterForm">
+                <input type="date" class="form-control" id="tanggalInput" name="tanggal" value="{{ tanggal }}">
+                <button type="submit" class="btn btn-primary mt-2" id="tanggalFilterBtn">Filter</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Tabel Shift -->
+    <div class="table-responsive mt-3">
+        <table class="table table-bordered" id="shiftTable">
+            <thead>
+                <tr>
+                    <th>Nama</th>
+                    <th>Jabatan</th>
+                    <th>Lokasi</th>
+                    <th>Tanggal</th>
+                    <th>Shift</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if shifts.items %}
+                    {% for shift in shifts.items %}
+                    <tr data-id="{{ shift.id }}">
+                        <td class="shift-cell">{{ shift.nama }}</td>
+                        <td class="shift-cell">{{ shift.jabatan }}</td>
+                        <td class="shift-cell" data-loc-id="{{ shift.lokasi_id }}">{{ shift.lokasi.nama_lokasi }}</td>
+                        <td class="shift-cell">{{ shift.tanggal.strftime('%Y-%m-%d') }}</td>
+                        <td class="shift-cell">{{ shift.shift }}</td>
+                        <td>
+                            <div class="btn-group" role="group">
+                                <button class="btn btn-warning btn-sm" onclick="toggleEditMode(this)">Edit</button>
+                                <button class="btn btn-danger btn-sm" onclick="deleteShift({{ shift.id }})">Delete</button>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="6" class="text-center">Tidak ada data shift yang tersedia.</td>
+                    </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Pagination -->
+    <div class="d-flex justify-content-center mt-3" id="pagination">
+        {% if shifts.has_prev %}
+        <a class="btn btn-outline-primary" href="?page=1{% if lokasi_id %}&lokasi_id={{ lokasi_id }}{% endif %}{% if tanggal %}&tanggal={{ tanggal }}{% endif %}">First</a>
+        <a class="btn btn-outline-primary" href="?page={{ shifts.prev_num }}{% if lokasi_id %}&lokasi_id={{ lokasi_id }}{% endif %}{% if tanggal %}&tanggal={{ tanggal }}{% endif %}">Previous</a>
+        {% endif %}
+        <span class="mx-2">Page {{ shifts.page }} of {{ shifts.pages }}</span>
+        <select id="paginationSelect" class="form-select ml-2" style="width: auto; display: inline-block;">
+            {% for page in range(1, shifts.pages + 1) %}
+            <option value="{{ page }}" {% if page == shifts.page %}selected{% endif %}>{{ page }}</option>
+            {% endfor %}
+        </select>
+        {% if shifts.has_next %}
+        <a class="btn btn-outline-primary" href="?page={{ shifts.next_num }}{% if lokasi_id %}&lokasi_id={{ lokasi_id }}{% endif %}{% if tanggal %}&tanggal={{ tanggal }}{% endif %}">Next</a>
+        <a class="btn btn-outline-primary" href="?page={{ shifts.pages }}{% if lokasi_id %}&lokasi_id={{ lokasi_id }}{% endif %}{% if tanggal %}&tanggal={{ tanggal }}{% endif %}">Last</a>
+        {% endif %}
+    </div>
+</div>
+
+<script>
+    // Function to generate input forms based on num_entries
+    function generateInputForms() {
+        var numEntries = parseInt(document.getElementById('num_entries').value);
+        var inputForms = document.getElementById('inputForms');
+        inputForms.innerHTML = ''; // Clear previous forms
+    
+        for (var i = 0; i < numEntries; i++) {
+            var formHTML = `
+            <form class="input-form" data-index="${i}">
+                <div class="form-group">
+                    <label for="nama${i}">Nama:</label>
+                    <input type="text" class="form-control" id="nama${i}" name="nama_${i}" required>
+                </div>
+                <div class="form-group">
+                    <label for="jabatan${i}">Jabatan:</label>
+                    <input type="text" class="form-control" id="jabatan${i}" name="jabatan_${i}" required>
+                </div>
+                <div class="form-group">
+                    <label for="lokasi_id${i}">Lokasi:</label>
+                    <select class="form-control" id="lokasi_id${i}" name="lokasi_id_${i}" required>
+                        <option value="">Pilih Lokasi</option>
+                        {% for lokasi in lokasis %}
+                        <option value="{{ lokasi.id }}">{{ lokasi.nama_lokasi }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="tanggal${i}">Tanggal:</label>
+                    <input type="date" class="form-control" id="tanggal${i}" name="tanggal_${i}" required>
+                </div>
+                <div class="form-group">
+                    <label for="shift${i}">Shift:</label>
+                    <input type="text" class="form-control" id="shift${i}" name="shift_${i}" required>
+                </div>
+                <button type="button" class="btn btn-primary" onclick="submitForm(${i})">Tambah Shift</button>
+            </form>
+            <hr>
+            `;
+            inputForms.innerHTML += formHTML;
+        }
+    }
+    
+    // Function to submit individual form
+    function submitForm(index) {
+        var form = document.querySelector(`.input-form[data-index="${index}"]`);
+        var formData = {
+            nama: form.elements[`nama_${index}`].value,
+            jabatan: form.elements[`jabatan_${index}`].value,
+            lokasi_id: form.elements[`lokasi_id_${index}`].value,
+            tanggal: form.elements[`tanggal_${index}`].value,
+            shift: form.elements[`shift_${index}`].value
+        };
+
+        console.log('Sending data:', formData); // Debugging log
+
+        fetch(`/submit_shifts`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData),
+        })
+        .then(response => {
+            console.log('Response status:', response.status); // Debugging log
+            return response.json();
+        })
+        .then(data => {
+            console.log('Response data:', data); // Debugging log
+            if (data.status === 'success') {
+                alert('Data Shift berhasil ditambahkan!');
+                form.reset(); // Reset form fields after successful submission
+            } else {
+                alert('Gagal menambahkan data Shift!');
+            }
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+            alert('Gagal menambahkan data Shift!');
+        });
+    }
+    
+    // Function to toggle edit mode for table cells
+    function toggleEditMode(button) {
+        var row = button.closest('tr');
+        var cells = row.getElementsByTagName('td');
+        
+                   // Toggle contenteditable attribute
+                   for (var i = 0; i < cells.length - 1; i++) { // Exclude the last column (Action)
+                    cells[i].contentEditable = !cells[i].isContentEditable;
+                    cells[i].classList.toggle('bg-light');
+                }
+            
+                // Toggle button text
+                var buttonText = button.innerHTML.trim();
+                button.innerHTML = (buttonText === 'Edit') ? 'Save' : 'Edit';
+                button.classList.toggle('btn-warning');
+                button.classList.toggle('btn-success');
+            
+                if (buttonText === 'Save') {
+                    // Perform AJAX update on Save
+                    var shiftId = row.getAttribute('data-id');
+                    var nama = cells[0].innerText.trim();
+                    var jabatan = cells[1].innerText.trim();
+                    var lokasiId = row.querySelector('.shift-cell:nth-child(3)').getAttribute('data-loc-id');
+                    var tanggal = cells[3].innerText.trim();
+                    var shift = cells[4].innerText.trim();
+            
+                    var data = {
+                        nama: nama,
+                        jabatan: jabatan,
+                        lokasi_id: lokasiId,
+                        tanggal: tanggal,
+                        shift: shift
+                    };
+            
+                    fetch(`/update_shift/${shiftId}`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(data),
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.status === 'success') {
+                            row.querySelector('.shift-cell:nth-child(3)').innerText = lokasiId; // Update lokasi name
+                            button.innerHTML = 'Edit';
+                            button.classList.replace('btn-success', 'btn-warning');
+                            for (var i = 0; i < cells.length - 1; i++) {
+                                cells[i].contentEditable = false;
+                                cells[i].classList.remove('bg-light');
+                            }
+                            alert('Data Shift berhasil diubah!');
+                        } else {
+                            alert('Gagal mengubah data Shift!');
+                        }
+                    })
+                    .catch((error) => {
+                        console.error('Error:', error);
+                        alert('Gagal mengubah data Shift!');
+                    });
+                }
+            }
+            
+            // Function to handle shift deletion
+            function deleteShift(shiftId) {
+                if (confirm('Anda yakin ingin menghapus data ini?')) {
+                    fetch(`/delete_shift/${shiftId}`, {
+                        method: 'POST',
+                    })
+                    .then(response => {
+                        if (response.redirected) {
+                            window.location.href = response.url;
+                        } else {
+                            alert('Gagal menghapus data Shift!');
+                        }
+                    })
+                    .catch((error) => {
+                        console.error('Error:', error);
+                        alert('Gagal menghapus data Shift!');
+                    });
+                }
+            }
+            
+            // Event listener for lokasi filter form submission
+            document.getElementById('lokasiFilterForm').addEventListener('submit', function(event) {
+                event.preventDefault();
+                var lokasiId = document.getElementById('lokasiSelect').value;
+                window.location.href = `/input_shift?lokasi_id=${lokasiId}`;
+            });
+            
+            // Event listener for tanggal filter form submission
+            document.getElementById('tanggalFilterForm').addEventListener('submit', function(event) {
+                event.preventDefault();
+                var tanggal = document.getElementById('tanggalInput').value;
+                window.location.href = `/input_shift?tanggal=${tanggal}`;
+            });
+            
+            // Event listener for numEntriesForm submission
+            document.getElementById('numEntriesForm').addEventListener('submit', function(event) {
+                event.preventDefault();
+                generateInputForms();
+            });
+            
+            // Event listener for pagination select
+            document.getElementById('paginationSelect').addEventListener('change', function() {
+                var selectedPage = this.value;
+                var currentUrl = window.location.href.split('?')[0]; // Get current URL without query params
+                var queryParams = [];
+                var urlParams = new URLSearchParams(window.location.search);
+            
+                for (const [key, value] of urlParams) {
+                    if (key !== 'page') {
+                        queryParams.push(`${key}=${value}`);
+                    }
+                }
+            
+                if (selectedPage !== '1') {
+                    queryParams.push(`page=${selectedPage}`);
+                }
+            
+                var newUrl = currentUrl + '?' + queryParams.join('&');
+                window.location.href = newUrl;
+            });
+        </script>
+    {% endblock %}
+    

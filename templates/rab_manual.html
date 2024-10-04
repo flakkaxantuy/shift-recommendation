@@ -1,0 +1,240 @@
+{% extends "base.html" %}
+<style>
+  .text-center {
+    text-align: center;
+  }
+  .underline {
+    text-decoration: underline;
+  }
+</style>
+{% block content %}
+<div class="container">
+  <h2 class="mt-4 mb-4">Rancangan Anggaran Biaya </h2>
+  <!-- Content Table -->
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-body">
+          <form method="post">
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="location">Lokasi</label>
+                <select
+                  id="location"
+                  name="location"
+                  class="custom-select"
+                  required
+                >
+                  <option value="" selected>Pilih Lokasi</option>
+                  {% for loc in all_locations %}
+                  <option value="{{ loc[0] }}">{{ loc[1] }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="event">Nama Event</label>
+                <input
+                  type="text"
+                  id="event"
+                  name="event"
+                  class="form-control"
+                  placeholder="Event"
+                  required
+                />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="start-time">Periode Waktu Mulai</label>
+                <input
+                  type="date"
+                  id="start-time"
+                  name="start-time"
+                  class="form-control"
+                  required
+                />
+              </div>
+              <div class="form-group col-md-6">
+                <label for="end-time">Periode Waktu Berakhir</label>
+                <input
+                  type="date"
+                  id="end-time"
+                  name="end-time"
+                  class="form-control"
+                  required
+                />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-12">
+                <label for="massa" >Jumlah Massa</label>
+                <input
+                  type="number"
+                  id="massa"
+                  name="massa"
+                  class="form-control"
+                  placeholder="200"
+                  required
+                />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="col-md-12">
+                <button type="submit" class="btn btn-primary btn-block">
+                  Submit
+                </button>
+              </div>
+            </div>
+          </form>
+          {% if bko_recommendations_dict %}
+          <div class="table-responsive mt-4">
+            <h4 class="mb-4">Rancangan Anggaran Biaya</h4>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th class="text-center">Nomor</th>
+                  <th class="text-center">Tanggal</th>
+                  <th class="text-center" style="width: 140px;">Event</th>
+                  <th class="text-center">Shift</th>
+                  <th class="text-center">Jumlah Personil</th>
+                  <th class="text-center">Harga Satuan</th>
+                  <th class="text-center">Satuan</th>
+                  <th class="text-center">Total</th>
+                  <th class="text-center">Personil</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for bko_recommendation in bko_recommendations_dict %}
+                <tr>
+                  <td class="text-center">{{ bko_recommendation['Nomor'] }}</td>
+                  <td class="text-center">{{ bko_recommendation['Tanggal'] }}</td>
+                  <td class="text-center">{{ bko_recommendation['Event'] }}</td>
+                  <td class="text-center">{{ bko_recommendation['Shift'] }}</td>
+                  <td class="text-center">{{ bko_recommendation['Jumlah Personil'] }}</td>
+                  <td class="text-center">{{ bko_recommendation['IDR Format Biaya / Satuan'] }}</td>
+                  <td class="text-center">{{ bko_recommendation['Satuan'] }}</td>
+                  <td class="text-center">{{ bko_recommendation['IDR Format Total Biaya'] }}</td>
+                  <td class="text-center">{{ bko_recommendation['Personil'] }}</td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <td class="text-center" style="font-weight: bold;">TOTAL</td>
+                    <td class="text-center"></td>
+                    <td class="text-center"></td>
+                    <td class="text-center">{{ sum_shift}}</td>
+                    <td class="text-center">{{ sum_jumlah_personil }}</td>
+                    <td class="text-center"></td>
+                    <td class="text-center"></td>
+                    <td class="text-center">{{ idr_format_sum_total_biaya}} </td>
+                    <td class="text-center"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+            {% set json_print_bko_recommendation = [] %}
+            {% for print_bko_recommendation in print_bko_recommendations %}
+                {% set prediction_dict = {
+                    "Nomor": loop.index,
+                    "Tanggal": print_bko_recommendation['Tanggal'],
+                    "Lokasi": print_bko_recommendation['Lokasi'],
+                    "Event": print_bko_recommendation['Event'],
+                    "Shift": print_bko_recommendation['Shift'],
+                    "Jumlah Personil": print_bko_recommendation['Jumlah_Personil'],
+                    "Biaya / Personil": print_bko_recommendation['Biaya / Satuan'],
+                    "Total Biaya": print_bko_recommendation['Total Biaya'],
+                    "Personil": print_bko_recommendation['Personil']
+                } %}
+                {% set _ = json_print_bko_recommendation.append(prediction_dict) %}
+            {% endfor %}
+
+            <form action="/print_rab_bko" method="post">
+                <input type="hidden" name="print_rab_df" value='{{ bko_recommendations_dict | tojson | safe }}'>
+                <input type="hidden" name="idr_format_sum_total_biaya" value='{{ idr_format_sum_total_biaya }}'>
+                <input type="hidden" name="sum_jumlah_personil" value='{{ sum_jumlah_personil  }}'>
+                <input type="hidden"  name="sum_shift" value='{{ sum_shift }}'>
+                <input type="hidden" name="nomor_surat_value">
+                <div class="form-group">
+                  <label for="nomor_surat" class="mt-4">Biaya Personil</label>
+                  <div style="display: flex; align-items: center; justify-content: center;">
+                      <p style="margin: 0; margin-right: 5px;">Rp</p>
+                      <input type="number"
+                      placeholder="Biaya Personil"
+                      id="biaya_personil"
+                      name="biaya_personil"
+                      class="form-control"
+                      required
+                      value="260000"
+                      step="10000">
+                  </div>
+                </div>
+                <div class="form-group mt-4">
+                    <label for="nomor_surat">Perihal</label>
+                    <input placeholder="RAB Support BKO PAM {{events}} tahun {{year}}"
+                    id="perihal"
+                    name="perihal"
+                    class="form-control"
+                    required
+                    value="Support BKO PAM {{events}} tahun {{year}}"
+                    ></input>
+                </div>
+                <div class="form-group">
+                    <label for="nomor_surat">Nomor Surat</label>
+                    <input placeholder="00/RAB/PAIER/SBY/{{year}}"
+                    id="nomor_surat"
+                    name="nomor_surat"
+                    class="form-control"
+                    required
+                    ></input>
+                </div>
+                <label style="margin-bottom: 20px; margin-top: 15px;">TTD Pihak Pertama</label>
+                <div class="form-group">
+                    <label for="pihak_pertama_nama">Nama</label>
+                    <input id="pihak_pertama_nama" name="pihak_pertama_nama" class="form-control" placeholder="Nama Lengkap Pihak Pertama" >
+                </input>
+                </div>
+                <div class="form-group">
+                    <label for="pihak_pertama_jabatan">Jabatan</label>
+                    <input id="pihak_pertama_jabatan" name="pihak_pertama_jabatan" class="form-control" placeholder="Jabatan Pihak Pertama">
+                    </input>
+                </div>
+                <label style="margin-bottom: 20px; margin-top: 15px;">TTD Pihak Kedua</label>
+                <div class="form-group">
+                    <label for="pihak_kedua_nama">Nama</label>
+                    <input id="pihak_kedua_nama" name="pihak_kedua_nama" class="form-control"  placeholder="Nama Lengkap Pihak Kedua">
+                </input>
+                </div>
+                <div class="form-group">
+                    <label for="pihak_kedua_jabatan">Jabatan</label>
+                    <input id="pihak_kedua_jabatan" name="pihak_kedua_jabatan" class="form-control" placeholder="Jabatan Pihak Kedua" >
+                    </input>
+                </div>
+                <label style="margin-bottom: 20px; margin-top: 15px;">TTD Pihak Ketiga</label>
+                <div class="form-group">
+                    <label for="pihak_ketiga_nama">Nama</label>
+                    <input id="pihak_ketiga_nama" name="pihak_ketiga_nama" class="form-control"  placeholder="Nama Lengkap Pihak Ketiga">
+                </input>
+                </div>
+                <div class="form-group">
+                    <label for="pihak_ketiga_jabatan">Jabatan</label>
+                    <input id="pihak_ketiga_jabatan" name="pihak_ketiga_jabatan" class="form-control" placeholder="Jabatan Pihak Ketiga" >
+                    </input>
+                </div>
+                <div class="form-group" >
+                    <label for="note">Catatan</label>
+                    <textarea style="height: 200px; width: 100%; padding: 10px;" id="note"  name="note"
+                    placeholder="1. Support BKO PAM {{events}} {{year}} &#10;2. BKO ditempatkan di {{selected_location}} &#10;3. Shift 1 pukul 08:00-20:00&#10;4. Shift 2 pukul 20:00-08:00&#10;. Penjagaan dimulai dari tanggal {{start_date}} s/d {{end_date}}">1. Support BKO PAM {{events}} {{year}}&#10;2. BKO ditempatkan di {{selected_location}}&#10;3. Shift 1 pukul 08:00-20:00 &#10;4. Shift 2 pukul 20:00-08:00&#10;5. Penjagaan dimulai dari tanggal {% if start_date == end_date %}{{start_date}} {% else %} {{start_date}} s/d {{end_date}} {% endif %}
+                </textarea>
+                </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Print PDF</button>
+                </form>
+          {% endif %}
+          <div class="text-center mt-4">
+            <!-- <button type="button" class="btn btn-secondary">Download</button> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

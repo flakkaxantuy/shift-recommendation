@@ -1,0 +1,344 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2 class="pb-3 ml-2 font-weight-bold">Buat Shift</h2>
+<!-- Form -->
+<div class="p-2 mb-2 row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body" style="padding-top: 30px;">
+                <div class="container">
+                    <form action="{{ url_for('shift.shift') }}" method="POST">
+                        <div class="form-container">
+                            <!-- gives error when the date range > 31 days -->
+                            {% if error_date_range_msg%}
+                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                Gagal diproses!<strong> Periode Waktu Mulai</strong> dan <strong>Periode Waktu Berakhir</strong> melebihi 31 hari.
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                            {% endif %}
+                            <!-- gives error when the start_date > end_date -->
+                            {% if error_date_msg %}
+                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                Gagal diproses!<strong> Periode Waktu Mulai</strong> kurang dari <strong>Periode Waktu Berakhir</strong>.
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                            {% endif %}
+                            <div class="form-group">
+                                <label for="location">Lokasi</label>
+                                <select id="location" name="location" class="form-control" required>
+                                    <option value="" disabled selected>Pilih Lokasi</option>
+                                    {% for loc in all_locations %}
+                                    <option value="{{ loc[0] }}">{{ loc[1] }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="start_date">Periode Waktu Mulai</label>
+                                <input type="date" id="start_date" name="start_date" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="end_date">Periode Waktu Berakhir</label>
+                                <input type="date" id="end_date" name="end_date" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="button-container mt-3">
+                            <button type="submit" class="btn btn-primary w-100">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% if schedules or bko_recommendations %}
+<div class="p-2 mb-2 row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body" style="padding-top: 30px;">
+                {% if schedules %}
+                <div class="container">
+                    <div class="text-center">
+                            <h4><strong>Jadwal Shift {{ selected_lokasi }}</strong></h4>
+                            <h4>{{ kota }}</h4>
+                        <p>Periode: {{start_date_not_formatted}} s/d {{end_date_not_formatted}} </p>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Nama</th>
+                                    <th>Jabatan</th>
+                                    {% for date in days_abbr %}
+                                    <th>{{ date }}<br></th>
+                                    {% endfor %}
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% set name_set = schedules | map(attribute='nama') | list | unique %}
+                                {% for name in name_set %}
+                                {% set person_shifts = schedules | selectattr('nama', 'equalto', name) | list %}
+                                <tr>
+                                    <td>{{ loop.index }}</td>
+                                    <td>{{ name }}</td>
+                                    <td>{{ person_shifts[0]['jabatan'] }}</td>
+                                    {% for date in date_range %}
+                                    {% set shift_for_date = person_shifts | selectattr('tanggal', 'equalto', date.strftime('%Y-%m-%d')) | list %}
+                                    <td contenteditable="true" class="shift-cell" data-name="{{ name }}" data-date="{{ date.strftime('%Y-%m-%d') }}">
+                                        {% if shift_for_date %}
+                                            {{ shift_for_date[0]['shift'] }}
+                                        {% else %}
+                                            -
+                                        {% endif %}
+                                    </td>
+                                    {% endfor %}
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="text-center mt-5">
+                        <h4><strong>Surat Jadwal Shift </strong></h4>
+                        <p>Periode: {{start_date_not_formatted}} s/d {{end_date_not_formatted}} </p>
+                    </div>
+                    <form action="/print_pola_shift" method="post">
+                        <div class="form-group">
+                            <label for="schedule_sign_name_label">Nama Lengkap</label>
+                            <input placeholder="Nama Lengkap Pengesah"
+                            id="schedule_sign_name"
+                            name="schedule_sign_name"
+                            class="form-control"
+                            required
+                            ></input>
+                        </div>
+                        <div class="form-group">
+                            <label for="schedule_sign_jabatan_label">Jabatan</label>
+                            <input placeholder="Jabatan Pengesah"
+                            id="schedule_sign_jabatan"
+                            name="schedule_sign_jabatan"
+                            class="form-control"
+                            ></input>
+                        <div class="form-group mt-3" >
+                                <label for="note_schedule">Catatan</label>
+                                <textarea style="height: 200px; width: 100%; padding: 10px;" id="note_schedule"  name="note_schedule"
+                                placeholder="P: Masuk Pagi Jam 07.00 s/d 19.00&#10M: Masuk Malam Jam 19.00 s/d 07.00&#10OFF: Libur Selama 1x24 jam">P: Masuk Pagi Jam 07.00 s/d 19.00&#10M: Masuk Malam Jam 19.00 s/d 07.00&#10OFF: Libur Selama 1x24 jam
+                              </textarea>
+                        </div>
+                        </div>
+                            <input type="hidden" name="print_start_date" value='{{ start_date_not_formatted }}'>
+                            <input type="hidden" name="print_end_date" value='{{ end_date_not_formatted }}'>
+                            <input type="hidden" name="print_pola_shift_df" value='{{ schedules | tojson | safe }}'>
+                            <input type="hidden" name="print_location" value='{{ selected_lokasi }}'>
+                            <input type="hidden" name="kota" value='{{ kota }}'>
+                            <div class="button-container mt-4">
+                                <button type="submit" class="btn btn-primary w-100 mt-4">Print Jadwal Shift</button>
+                            </div>
+                        </form>
+                    {% endif %}
+                    
+                    {% if bko_recommendations %}
+                    <div class="container">
+                    <div>
+                        <div class="text-center mb-4 mt-5">
+                            <h4><strong>Anggaran BKO {{ selected_lokasi }}</strong></h4>
+                            <p>Periode: {{start_date_not_formatted}} s/d {{end_date_not_formatted}} </p>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Tanggal</th>
+                                        <th>Event</th>
+                                        <th>Shift</th>
+                                        <th>Jumlah Personil</th>
+                                        <th>Harga Satuan</th>
+                                        <th>Satuan</th>
+                                        <th>Total</th>
+                                        <th>Personil</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for bko_recommendation in bko_recommendations %}
+                                    <tr>
+                                        <td class="text-center">{{ bko_recommendation['Tanggal']}}</td>
+                                        <td class="text-center">{{ bko_recommendation['Event'] }}</td>
+                                        <td class="text-center">{{ bko_recommendation['Shift']}}</td>
+                                        <td class="text-center">{{ bko_recommendation['Jumlah Personil'] }}</td>
+                                        <td class="text-center">{{ bko_recommendation['IDR Format Biaya / Satuan'] }}</td>
+                                        <td class="text-center">Orang/Shift</td>
+                                        <td class="text-center">{{ bko_recommendation['IDR Format Total Biaya'] }}</td>
+                                        <td class="text-center">{{ bko_recommendation['Personil'] }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    {% set json_print_bko_recommendation = [] %}
+                    {% for print_bko_recommendation in print_bko_recommendations %}
+                        {% set prediction_dict = {
+                            "Nomor": loop.index,
+                            "Tanggal": print_bko_recommendation['Tanggal'],
+                            "Lokasi": print_bko_recommendation['Lokasi'],
+                            "Event": print_bko_recommendation['Event'],
+                            "Shift": print_bko_recommendation['Shift'],
+                            "Jumlah Personil": print_bko_recommendation['Jumlah Personil'],
+                            "Biaya / Personil": print_bko_recommendation['Biaya / Satuan'],
+                            "Total Biaya": print_bko_recommendation['Total Biaya'],
+                            "Personil": print_bko_recommendation['Personil']
+                        } %}
+                        {% set _ = json_print_bko_recommendation.append(prediction_dict) %}
+                    {% endfor %}
+
+                    <div class="text-center mt-4">
+                        <h4><strong>Surat Anggaran BKO </strong></h4>
+                        <p>Periode: {{start_date_not_formatted}} s/d {{end_date_not_formatted}} </p>
+                    </div>
+
+                    <form action="/print_rab_bko" method="post">
+                        <input type="hidden" name="print_rab_df" value='{{ bko_recommendations | tojson | safe }}'>
+                        <input type="hidden" name="idr_format_sum_total_biaya" value='{{ idr_format_sum_total_biaya }}'>
+                        <input type="hidden" name="sum_jumlah_personil" value='{{ sum_jumlah_personil  }}'>
+                        <input type="hidden"  name="sum_shift" value='{{ sum_shift }}'>
+                        <input type="hidden" name="nomor_surat_value">
+                        <div class="form-group">
+                            <label for="nomor_surat" class="mt-4">Biaya Personil</label>
+                            <div style="display: flex; align-items: center; justify-content: center;">
+                                <p style="margin: 0; margin-right: 5px;">Rp</p>
+                                <input type="number"
+                                placeholder="Biaya Personil"
+                                id="biaya_personil"
+                                name="biaya_personil"
+                                class="form-control"
+                                required
+                                value="260000"
+                                step="10000">
+                            </div>
+                          </div>
+                        <div class="form-group">
+                          <label for="nomor_surat" class="mt-2">Perihal</label>
+                          <input placeholder="RAB Support BKO PAM {{events}} tahun {{year}}"
+                          id="perihal"
+                          name="perihal"
+                          class="form-control"
+                          required
+                          value="Support BKO PAM {{events}} tahun {{year}}"
+                          ></input>
+                        </div>
+                        <div class="form-group">
+                          <label for="nomor_surat">Nomor Surat</label>
+                          <input placeholder="00/RAB/PAIER/SBY/{{year}}"
+                          id="nomor_surat"
+                          name="nomor_surat"
+                          class="form-control"
+                          required
+                          ></input>
+                        </div>
+                        <label style="margin-bottom: 20px; margin-top: 15px;">TTD Pihak Pertama</label>
+                        <div class="form-group">
+                          <label for="pihak_pertama_nama">Nama</label>
+                          <input id="pihak_pertama_nama" name="pihak_pertama_nama" class="form-control" placeholder="Nama Lengkap Pihak Pertama" >
+                        </input>
+                        </div>
+                        <div class="form-group">
+                          <label for="pihak_pertama_jabatan">Jabatan</label>
+                          <input id="pihak_pertama_jabatan" name="pihak_pertama_jabatan" class="form-control" placeholder="Jabatan Pihak Pertama">
+                          </input>
+                        </div>
+                        <label style="margin-bottom: 20px; margin-top: 15px;">TTD Pihak Kedua</label>
+                        <div class="form-group">
+                          <label for="pihak_kedua_nama">Nama</label>
+                          <input id="pihak_kedua_nama" name="pihak_kedua_nama" class="form-control"  placeholder="Nama Lengkap Pihak Kedua">
+                        </input>
+                        </div>
+                        <div class="form-group">
+                          <label for="pihak_kedua_jabatan">Jabatan</label>
+                          <input id="pihak_kedua_jabatan" name="pihak_kedua_jabatan" class="form-control" placeholder="Jabatan Pihak Kedua" >
+                          </input>
+                        </div>
+                        <label style="margin-bottom: 20px; margin-top: 15px;">TTD Pihak Ketiga</label>
+                        <div class="form-group">
+                            <label for="pihak_ketiga_nama">Nama Pihak Ketiga</label>
+                            <input id="pihak_ketiga_nama" name="pihak_ketiga_nama" class="form-control" placeholder="Nama Lengkap Pihak Ketiga">
+                          </div>
+                          <div class="form-group">
+                            <label for="pihak_ketiga_jabatan">Jabatan</label>
+                            <input id="pihak_ketiga_jabatan" name="pihak_ketiga_jabatan" class="form-control" placeholder="Jabatan Pihak Ketiga" >
+                            </input>
+                          </div>
+                          
+                        <div class="form-group" >
+                          <label for="note">Catatan</label>
+                          <textarea style="height: 200px; width: 100%; padding: 10px;" id="note"  name="note"
+                          placeholder="1. Support BKO PAM {{events}} {{year}} &#10;2. BKO ditempatkan di {{selected_lokasi}} &#10;3. Shift 1 pukul 08:00-20:00&#10;4. Shift 2 pukul 20:00-08:00&#10;. Penjagaan dimulai dari tanggal {{first_date}} s/d {{last_date}}">1. Support BKO PAM {{events}} {{year}}&#10;2. BKO ditempatkan di {{selected_lokasi}}&#10;3. Shift 1 pukul 08:00-20:00 &#10;4. Shift 2 pukul 20:00-08:00&#10;5. Penjagaan dimulai dari tanggal {% if start_date == end_date %}{{start_date}} {% else %} {{start_date}} s/d {{end_date}} {% endif %}
+                        </textarea>
+                        </div>
+                      </div>
+                        <button type="submit" class="btn btn-primary w-100">Print Anggaran BKO</button>
+                      </form>
+                </div>
+                {% endif %}
+
+                  
+
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+<script>
+function toggleEditMode() {
+    const editButton = document.getElementById('edit-button');
+    const cells = document.querySelectorAll('.shift-cell');
+
+    if (editButton.textContent === 'Edit') {
+        editButton.textContent = 'Simpan';
+        cells.forEach(cell => cell.contentEditable = 'true');
+    } else {
+        editButton.textContent = 'Edit';
+        cells.forEach(cell => cell.contentEditable = 'false');
+        saveUpdates();
+    }
+}
+
+function saveUpdates() {
+    const cells = document.querySelectorAll('.shift-cell');
+    let updatedData = [];
+
+    cells.forEach(cell => {
+        const nama = cell.getAttribute('data-name');
+        const tanggal = cell.getAttribute('data-date');
+        const shift = cell.textContent;
+
+        updatedData.push({ nama, tanggal, shift });
+    });
+
+    // Send updatedData to the server using Fetch API or AJAX
+    fetch('/update-shift', {
+        method: 'POST',
+        body: JSON.stringify(updatedData),
+        headers: { 'Content-Type': 'application/json' }
+    }).then(response => response.json()).then(data => {
+        if (data.success) {
+            alert('Shift updated successfully!');
+        } else {
+            alert('Failed to update shift.');
+        }
+    });
+}
+
+function printPDF() {
+    window.print();
+}
+</script>
+{% endblock %}
